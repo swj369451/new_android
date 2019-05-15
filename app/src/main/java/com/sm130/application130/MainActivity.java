@@ -1,13 +1,19 @@
 package com.sm130.application130;
 
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.constraint.Group;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -21,6 +27,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.sm130.application130.controller.GetMassage;
+import com.sm130.application130.domain.Data;
 import com.sm130.application130.domain.JsonRootBean;
 import com.sm130.application130.viewpage.NoScrollViewPager;
 
@@ -30,7 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity {
 
     private View view1,view2,view3,view4,view5;
     private NoScrollViewPager viewPager;
@@ -39,30 +46,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private List<View> viewList;
 
-    private String data;
-//    获取json
-    private StringBuilder result;
-
+    private JsonRootBean jsonRootBean;
+    NavigationView navigationView;
+    DrawerLayout drawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        data=GetMassage.getHome();
+        jsonRootBean=GetMassage.getHome();
 //        Start 侧边栏
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
+//        侧边添加
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 //         侧边栏
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
 
-        System.out.println("333333333"+data);
         initData();
 
 
@@ -75,6 +84,47 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initData() {
+        navigationView.setBackgroundColor(Color.BLACK);
+        Resources resource=(Resources)getBaseContext().getResources();
+        ColorStateList csl=(ColorStateList)resource.getColorStateList(R.color.cbl);
+        navigationView.setItemTextColor(csl);
+
+
+//        为侧边栏添加数据
+        List<Data> data = jsonRootBean.getData();
+        int i = 0;
+        for(Data d:data){
+            navigationView.getMenu().add(1,i,1,d.getTitle());
+            navigationView.getMenu().findItem(i).setIcon(R.drawable.back);
+            i++;
+        }
+
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int id = menuItem.getItemId();
+                if (id == 0) {
+                    // Handle the camera action
+//                    关闭抽屉
+                    drawer.closeDrawers();
+                    System.out.println("1");
+                }else  if (id == 1) {
+                    // Handle the camera action
+                    drawer.closeDrawers();
+                    System.out.println("2");
+                }else if (id == 2) {
+                    // Handle the camera action
+                    drawer.closeDrawers();
+                    System.out.println("3");
+                }else if (id == 3) {
+                    // Handle the camera action
+                    drawer.closeDrawers();
+                    System.out.println("4");
+                }
+                    return true;
+            }
+        });
     }
 
     private void viewPage() {
@@ -171,11 +221,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        }
 //    }
 
-//    Start 侧边栏没有影响
+
+    //    Start 侧边栏没有影响
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
+//        getMenuInflater().inflate(R.menu.activity_main_drawer, menu);
 //        return true;
 //    }
 
@@ -196,25 +247,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
+//    @SuppressWarnings("StatementWithEmptyBody")
+//    @Override
+//    public boolean onNavigationItemSelected(MenuItem item) {
+////        // Handle navigation view item clicks here.
+////        int id = item.getItemId();
+////
+////        if (id == R.id.nav_camera) {
+////            // Handle the camera action
+////            System.out.println("1");
+////        } else if (id == R.id.nav_gallery) {
+////            System.out.println("2");
+////        } else if (id == R.id.nav_slideshow) {
+////            System.out.println("3");
+////        } else if (id == R.id.nav_manage) {
+////            System.out.println("4");
+////        }
+////        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+////        drawer.closeDrawer(GravityCompat.START);
+//        return true;
+//    }
 
     public void home(View view) {
         biaoti = findViewById(R.id.biaoti);

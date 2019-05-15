@@ -2,6 +2,8 @@ package com.sm130.application130.controller;
 
 import android.os.StrictMode;
 
+import com.google.gson.Gson;
+import com.sm130.application130.domain.JsonRootBean;
 import com.sm130.application130.global.GlobalConstants;
 
 import java.io.BufferedReader;
@@ -17,7 +19,7 @@ public class GetMassage {
     private static HttpURLConnection connection = null;
     private static BufferedReader reader = null;
     private static StringBuilder result;
-    public static String getHome(){
+    public static JsonRootBean getHome(){
 //       new Thread(new Runnable() {
 //           @Override
 //           public void run() {
@@ -55,6 +57,8 @@ public class GetMassage {
                }
 //           }
 //       }).start();
-       return result.toString();
+        Gson gson = new Gson();
+        JsonRootBean jsonRootBean = gson.fromJson(result.toString(), JsonRootBean.class);
+        return jsonRootBean;
     }
 }
