@@ -38,6 +38,7 @@
                 android:text="首页"
                 android:checked="true"
                 android:gravity="center"
+                android:onClick="home"
                 />
             <RadioButton
                 android:id="@+id/rb_news"
@@ -51,6 +52,7 @@
                 android:textColor="#fff"
                 android:text="新闻中心"
                 android:gravity="center"
+                android:onClick="news"
                 />
             <RadioButton
                 android:id="@+id/rb_smart"
@@ -64,6 +66,7 @@
                 android:textColor="#fff"
                 android:text="智慧服务"
                 android:gravity="center"
+                android:onClick="smart"
                 />
             <RadioButton
                 android:id="@+id/rb_gov"
@@ -77,6 +80,7 @@
                 android:textColor="#fff"
                 android:text="政务"
                 android:gravity="center"
+                android:onClick="gov"
                 />
             <RadioButton
                 android:id="@+id/rb_set"
@@ -90,6 +94,7 @@
                 android:textColor="#fff"
                 android:text="设置"
                 android:gravity="center"
+                android:onClick="set"
                 />
         </RadioGroup>
 
