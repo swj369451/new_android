@@ -39,13 +39,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private List<View> viewList;
 
-//    获取数据
-    private GetMassage getMassage ;
+    private String data;
+//    获取json
+    private StringBuilder result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        data=GetMassage.getHome();
 //        Start 侧边栏
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
+        System.out.println("333333333"+data);
         initData();
 
 
@@ -72,10 +75,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initData() {
-//        String data = getMassage.getHome();
-//        Gson gson = new Gson();
-//        JsonRootBean jsonRootBean = gson.fromJson(data, JsonRootBean.class);
-//        System.out.println(jsonRootBean);
     }
 
     private void viewPage() {
@@ -96,9 +95,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewList.add(view3);
         viewList.add(view4);
         viewList.add(view5);
-
-        //获取数据
-        getMassage = new GetMassage();
 
         PagerAdapter pagerAdapter = new PagerAdapter() {
 
@@ -230,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         biaoti = findViewById(R.id.biaoti);
         biaoti.setText("新闻中心");
         viewPager.setCurrentItem(1);
-        getMassage.getHome();
+//        getMassage.getData();
     }
     public void smart(View view) {
         biaoti = findViewById(R.id.biaoti);
