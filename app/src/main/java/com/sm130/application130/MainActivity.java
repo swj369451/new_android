@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private List<View> viewList;
 
     private JsonRootBean jsonRootBean;
+//    侧边栏自定义
     NavigationView navigationView;
     DrawerLayout drawer;
     @Override
@@ -57,17 +58,19 @@ public class MainActivity extends AppCompatActivity {
         jsonRootBean=GetMassage.getHome();
 //        Start 侧边栏
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        侧边添加
+
+//        找到侧边栏
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
 
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+
+
 //         侧边栏
 //        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 //        navigationView.setNavigationItemSelectedListener(this);
@@ -84,7 +87,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
+//        设置背景颜色
         navigationView.setBackgroundColor(Color.BLACK);
+
+//        设置按钮风格
         Resources resource=(Resources)getBaseContext().getResources();
         ColorStateList csl=(ColorStateList)resource.getColorStateList(R.color.cbl);
         navigationView.setItemTextColor(csl);
@@ -99,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             i++;
         }
 
-
+//      添加点击事件
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
