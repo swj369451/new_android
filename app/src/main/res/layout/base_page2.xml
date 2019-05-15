@@ -8,7 +8,7 @@
     >
 
 
-   <include layout="@layout/title_pager"/>
+   <!--<include layout="@layout/title_pager"/>-->
 
     <FrameLayout
         android:id="@+id/fl_content"

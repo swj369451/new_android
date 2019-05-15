@@ -19,6 +19,11 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.sm130.application130.controller.GetMassage;
+import com.sm130.application130.domain.JsonRootBean;
+import com.sm130.application130.viewpage.NoScrollViewPager;
+
 import org.w3c.dom.ls.LSException;
 
 import java.util.ArrayList;
@@ -28,11 +33,14 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private View view1,view2,view3,view4,view5;
-    private ViewPager viewPager;
+    private NoScrollViewPager viewPager;
 
     private TextView biaoti;
 
     private List<View> viewList;
+
+//    获取数据
+    private GetMassage getMassage ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +60,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
 
-
+        initData();
 
 
 //        StartViewPage
-        viewPager= (ViewPager)findViewById(R.id.view_page);
+        viewPage();
+//        EndViewPage
+
+
+
+    }
+
+    private void initData() {
+//        String data = getMassage.getHome();
+//        Gson gson = new Gson();
+//        JsonRootBean jsonRootBean = gson.fromJson(data, JsonRootBean.class);
+//        System.out.println(jsonRootBean);
+    }
+
+    private void viewPage() {
+        viewPager= findViewById(R.id.view_page);
 
         LayoutInflater inflater = getLayoutInflater();
 
@@ -73,7 +96,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewList.add(view3);
         viewList.add(view4);
         viewList.add(view5);
+
+        //获取数据
+        getMassage = new GetMassage();
+
         PagerAdapter pagerAdapter = new PagerAdapter() {
+
 
 
 
@@ -134,11 +162,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         };
 
         viewPager.setAdapter(pagerAdapter);
-//        EndViewPage
-
     }
-
-
 
 
 //    @Override
@@ -206,6 +230,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         biaoti = findViewById(R.id.biaoti);
         biaoti.setText("新闻中心");
         viewPager.setCurrentItem(1);
+        getMassage.getHome();
     }
     public void smart(View view) {
         biaoti = findViewById(R.id.biaoti);
