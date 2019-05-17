@@ -5,97 +5,72 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.sm130.application130.controller.GetMassage;
 import com.sm130.application130.domain.Data;
 import com.sm130.application130.domain.Interface;
 import com.sm130.application130.domain.JsonRootBean;
 
-import com.sm130.application130.viewpage.NoScrollViewPager;
+import com.sm130.application130.fragment.Fragment1;
+import com.sm130.application130.fragment.NewsFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private View view1,view2,view3,view4,view5;
-    private View view6,view7,view8;
-    private NoScrollViewPager viewPager;
-
-    private TextView biaoti;
-
-    private List<View> viewList;
 
     private JsonRootBean jsonRootBean;
-    private LayoutInflater inflater;
 //    侧边栏自定义
     NavigationView navigationView;
     DrawerLayout drawer;
 
-//    页面数据
-    FrameLayout frameLayoutContent;
-
 //    公共碎片
     Fragment1 fragment1,fragment2,fragment3,fragment4,fragment5;
+    NewsFragment newsFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         jsonRootBean=GetMassage.getHome();
-//        Start 侧边栏
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
 //        找到侧边栏
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-//        页面数据
-//        frameLayoutContent = findViewById(R.id.fl_content);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+//       首页碎片
         fragment1 = Fragment1.newInstance(new Interface("智慧北京",false));
         fragment2 = Fragment1.newInstance(new Interface("新闻",true));
         fragment3 = Fragment1.newInstance(new Interface("生活",true));
         fragment4 = Fragment1.newInstance(new Interface("人口管理",true));
         fragment5 = Fragment1.newInstance(new Interface("设置",false));
+
+        MyFragmentManager myFragmentManager = new MyFragmentManager(getSupportFragmentManager());
+        newsFragment = NewsFragment.newInstance(jsonRootBean.getData().get(0).getChildren(),myFragmentManager);
+
+
 //        fragment
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container1,fragment1,"f1")
                 .addToBackStack(Fragment1.class.getSimpleName())
                 .commit();
-
-
-//         侧边栏
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
-
 //       初始化数据
         initData();
-
-
-//        StartViewPage
-//        viewPage();
-//        EndViewPagel'd
-
-
 
     }
 
@@ -129,180 +104,30 @@ public class MainActivity extends AppCompatActivity {
                     // Handle the camera action
 //                    关闭抽屉
                     drawer.closeDrawers();
-                    System.out.println("1");
+//                    System.out.println("1");
                 }else  if (id == 1) {
                     // Handle the camera action
                     drawer.closeDrawers();
 //                    biaoti = findViewById(R.id.biaoti);
 //                    biaoti.setText("专题");
-                    viewPager.setCurrentItem(5);
+//                    viewPager.setCurrentItem(5);
                 }else if (id == 2) {
                     // Handle the camera action
                     drawer.closeDrawers();
 //                    biaoti = findViewById(R.id.biaoti);
 //                    biaoti.setText("组图");
-                    viewPager.setCurrentItem(6);
+//                    viewPager.setCurrentItem(6);
                 }else if (id == 3) {
                     drawer.closeDrawers();
 //                    biaoti = findViewById(R.id.biaoti);
 //                    biaoti.setText("互动");
-                    viewPager.setCurrentItem(7);
+//                    viewPager.setCurrentItem(7);
                 }
                     return true;
             }
         });
     }
 
-//    private void viewPage() {
-//        viewPager= findViewById(R.id.view_page);
-//
-//        LayoutInflater inflater = getLayoutInflater();
-//
-//        view1 = inflater.inflate(R.layout.base_page,null);
-//        view2 = inflater.inflate(R.layout.base_page1,null);
-//        view3 = inflater.inflate(R.layout.base_page2,null);
-//        view4 = inflater.inflate(R.layout.base_page3,null);
-//        view5 = inflater.inflate(R.layout.base_page4,null);
-//        view6 = inflater.inflate(R.layout.base_page5,null);
-//        view7 = inflater.inflate(R.layout.base_page6,null);
-//        view8 = inflater.inflate(R.layout.base_page7,null);
-//
-//
-//
-//
-//        viewList = new ArrayList<>();
-//        viewList.add(view1);
-//        viewList.add(view2);
-//        viewList.add(view3);
-//        viewList.add(view4);
-//        viewList.add(view5);
-//        viewList.add(view6);
-//        viewList.add(view7);
-//        viewList.add(view8);
-//
-//
-//
-//        PagerAdapter pagerAdapter = new PagerAdapter() {
-//
-//
-//
-//
-//            @Override
-//
-//            public boolean isViewFromObject(View arg0, Object arg1) {
-//
-//                // TODO Auto-generated method stub
-//
-//                return arg0 == arg1;
-//
-//            }
-//
-//
-//
-//            @Override
-//
-//            public int getCount() {
-//
-//                // TODO Auto-generated method stub
-//
-//                return viewList.size();
-//
-//            }
-//
-//
-//
-//            @Override
-//
-//            public void destroyItem(ViewGroup container, int position,
-//
-//                                    Object object) {
-//
-//                // TODO Auto-generated method stub
-//
-//                container.removeView(viewList.get(position));
-//
-//            }
-//
-//
-//
-//            @Override
-//
-//            public Object instantiateItem(ViewGroup container, int position) {
-//
-//                // TODO Auto-generated method stub
-//
-//                container.addView(viewList.get(position));
-//
-//
-//
-//
-//
-//                return viewList.get(position);
-//
-//            }
-//
-//        };
-//
-//        viewPager.setAdapter(pagerAdapter);
-//    }
-
-
-//    @Override
-//    public void onBackPressed() {
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
-
-
-    //    Start 侧边栏没有影响
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.activity_main_drawer, menu);
-//        return true;
-//    }
-
-//    End 侧边栏没有影响
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
-//    @SuppressWarnings("StatementWithEmptyBody")
-//    @Override
-//    public boolean onNavigationItemSelected(MenuItem item) {
-////        // Handle navigation view item clicks here.
-////        int id = item.getItemId();
-////
-////        if (id == R.id.nav_camera) {
-////            // Handle the camera action
-////            System.out.println("1");
-////        } else if (id == R.id.nav_gallery) {
-////            System.out.println("2");
-////        } else if (id == R.id.nav_slideshow) {
-////            System.out.println("3");
-////        } else if (id == R.id.nav_manage) {
-////            System.out.println("4");
-////        }
-////        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-////        drawer.closeDrawer(GravityCompat.START);
-//        return true;
-//    }
 
     public void home(View view) {
 //        biaoti = findViewById(R.id.biaoti);
@@ -310,46 +135,31 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container1,fragment1,"f1")
                 .commit();
-//        viewPager.setCurrentItem(0);
     }
 
     public void news(View view) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container1,fragment2,"f2")
+                .replace(R.id.container1,newsFragment,"f2")
                 .commit();
 
-//        biaoti = findViewById(R.id.biaoti);
-//        biaoti.setText("新闻中心");
-
-//        viewPager.setCurrentItem(1);
-//        getMassage.getData();
     }
     public void smart(View view) {
-//        biaoti = findViewById(R.id.biaoti);
-//        biaoti.setText("智慧服务");
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container1,fragment3,"f3")
                 .commit();
-//        viewPager.setCurrentItem(2);
     }
 
     public void gov(View view) {
-//        biaoti = findViewById(R.id.biaoti);
-//        biaoti.setText("政务");
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container1,fragment4,"f4")
                 .commit();
-//        viewPager.setCurrentItem(3);
     }
 
     public void set(View view) {
 
-//        biaoti = findViewById(R.id.biaoti);
-//        biaoti.setText("设置");
        getSupportFragmentManager().beginTransaction()
                .replace(R.id.container1,fragment5,"f5")
                .commit();
-//        viewPager.setCurrentItem(4);
     }
 
 

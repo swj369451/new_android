@@ -1,6 +1,8 @@
 package com.sm130.application130.domain;
 
-public class Interface {
+import java.io.Serializable;
+
+public class Interface implements Serializable {
     String title;
     Boolean ct;
 

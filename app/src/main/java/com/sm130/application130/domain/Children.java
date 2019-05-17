@@ -3,13 +3,15 @@
   */
 package com.sm130.application130.domain;
 
+import java.io.Serializable;
+
 /**
  * Auto-generated: 2019-05-15 16:47:55
  *
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/
  */
-public class Children {
+public class Children implements Serializable {
 
     private int id;
     private String title;
