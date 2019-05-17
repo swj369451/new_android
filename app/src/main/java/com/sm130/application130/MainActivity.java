@@ -5,41 +5,25 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.constraint.Group;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
-import android.view.ContextMenu;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.webkit.WebViewFragment;
 import android.widget.FrameLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.sm130.application130.controller.GetMassage;
 import com.sm130.application130.domain.Data;
+import com.sm130.application130.domain.Interface;
 import com.sm130.application130.domain.JsonRootBean;
 
 import com.sm130.application130.viewpage.NoScrollViewPager;
-
-import org.w3c.dom.ls.LSException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
 //    页面数据
     FrameLayout frameLayoutContent;
+
+//    公共碎片
+    Fragment1 fragment1,fragment2,fragment3,fragment4,fragment5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,15 +71,16 @@ public class MainActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-
+        fragment1 = Fragment1.newInstance(new Interface("智慧北京",false));
+        fragment2 = Fragment1.newInstance(new Interface("新闻",true));
+        fragment3 = Fragment1.newInstance(new Interface("生活",true));
+        fragment4 = Fragment1.newInstance(new Interface("人口管理",true));
+        fragment5 = Fragment1.newInstance(new Interface("设置",false));
 //        fragment
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.container1,Fragement1.newInstance("hello world"),"f1")
+                .add(R.id.container1,fragment1,"f1")
+                .addToBackStack(Fragment1.class.getSimpleName())
                 .commit();
-
-
-
-
 
 
 //         侧边栏
@@ -104,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        StartViewPage
-        viewPage();
+//        viewPage();
 //        EndViewPagel'd
 
 
@@ -165,98 +153,98 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void viewPage() {
-        viewPager= findViewById(R.id.view_page);
-
-        LayoutInflater inflater = getLayoutInflater();
-
-        view1 = inflater.inflate(R.layout.base_page,null);
-        view2 = inflater.inflate(R.layout.base_page1,null);
-        view3 = inflater.inflate(R.layout.base_page2,null);
-        view4 = inflater.inflate(R.layout.base_page3,null);
-        view5 = inflater.inflate(R.layout.base_page4,null);
-        view6 = inflater.inflate(R.layout.base_page5,null);
-        view7 = inflater.inflate(R.layout.base_page6,null);
-        view8 = inflater.inflate(R.layout.base_page7,null);
-
-
-
-
-        viewList = new ArrayList<>();
-        viewList.add(view1);
-        viewList.add(view2);
-        viewList.add(view3);
-        viewList.add(view4);
-        viewList.add(view5);
-        viewList.add(view6);
-        viewList.add(view7);
-        viewList.add(view8);
-
-
-
-        PagerAdapter pagerAdapter = new PagerAdapter() {
-
-
-
-
-            @Override
-
-            public boolean isViewFromObject(View arg0, Object arg1) {
-
-                // TODO Auto-generated method stub
-
-                return arg0 == arg1;
-
-            }
-
-
-
-            @Override
-
-            public int getCount() {
-
-                // TODO Auto-generated method stub
-
-                return viewList.size();
-
-            }
-
-
-
-            @Override
-
-            public void destroyItem(ViewGroup container, int position,
-
-                                    Object object) {
-
-                // TODO Auto-generated method stub
-
-                container.removeView(viewList.get(position));
-
-            }
-
-
-
-            @Override
-
-            public Object instantiateItem(ViewGroup container, int position) {
-
-                // TODO Auto-generated method stub
-
-                container.addView(viewList.get(position));
-
-
-
-
-
-                return viewList.get(position);
-
-            }
-
-        };
-
-        viewPager.setAdapter(pagerAdapter);
-    }
+//    private void viewPage() {
+//        viewPager= findViewById(R.id.view_page);
+//
+//        LayoutInflater inflater = getLayoutInflater();
+//
+//        view1 = inflater.inflate(R.layout.base_page,null);
+//        view2 = inflater.inflate(R.layout.base_page1,null);
+//        view3 = inflater.inflate(R.layout.base_page2,null);
+//        view4 = inflater.inflate(R.layout.base_page3,null);
+//        view5 = inflater.inflate(R.layout.base_page4,null);
+//        view6 = inflater.inflate(R.layout.base_page5,null);
+//        view7 = inflater.inflate(R.layout.base_page6,null);
+//        view8 = inflater.inflate(R.layout.base_page7,null);
+//
+//
+//
+//
+//        viewList = new ArrayList<>();
+//        viewList.add(view1);
+//        viewList.add(view2);
+//        viewList.add(view3);
+//        viewList.add(view4);
+//        viewList.add(view5);
+//        viewList.add(view6);
+//        viewList.add(view7);
+//        viewList.add(view8);
+//
+//
+//
+//        PagerAdapter pagerAdapter = new PagerAdapter() {
+//
+//
+//
+//
+//            @Override
+//
+//            public boolean isViewFromObject(View arg0, Object arg1) {
+//
+//                // TODO Auto-generated method stub
+//
+//                return arg0 == arg1;
+//
+//            }
+//
+//
+//
+//            @Override
+//
+//            public int getCount() {
+//
+//                // TODO Auto-generated method stub
+//
+//                return viewList.size();
+//
+//            }
+//
+//
+//
+//            @Override
+//
+//            public void destroyItem(ViewGroup container, int position,
+//
+//                                    Object object) {
+//
+//                // TODO Auto-generated method stub
+//
+//                container.removeView(viewList.get(position));
+//
+//            }
+//
+//
+//
+//            @Override
+//
+//            public Object instantiateItem(ViewGroup container, int position) {
+//
+//                // TODO Auto-generated method stub
+//
+//                container.addView(viewList.get(position));
+//
+//
+//
+//
+//
+//                return viewList.get(position);
+//
+//            }
+//
+//        };
+//
+//        viewPager.setAdapter(pagerAdapter);
+//    }
 
 
 //    @Override
@@ -319,34 +307,49 @@ public class MainActivity extends AppCompatActivity {
     public void home(View view) {
 //        biaoti = findViewById(R.id.biaoti);
 //        biaoti.setText("首页");
-        viewPager.setCurrentItem(0);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container1,fragment1,"f1")
+                .commit();
+//        viewPager.setCurrentItem(0);
     }
 
     public void news(View view) {
-
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container1,fragment2,"f2")
+                .commit();
 
 //        biaoti = findViewById(R.id.biaoti);
 //        biaoti.setText("新闻中心");
-        viewPager.setCurrentItem(1);
+
+//        viewPager.setCurrentItem(1);
 //        getMassage.getData();
     }
     public void smart(View view) {
 //        biaoti = findViewById(R.id.biaoti);
 //        biaoti.setText("智慧服务");
-        viewPager.setCurrentItem(2);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container1,fragment3,"f3")
+                .commit();
+//        viewPager.setCurrentItem(2);
     }
 
     public void gov(View view) {
 //        biaoti = findViewById(R.id.biaoti);
 //        biaoti.setText("政务");
-        viewPager.setCurrentItem(3);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container1,fragment4,"f4")
+                .commit();
+//        viewPager.setCurrentItem(3);
     }
 
     public void set(View view) {
 
 //        biaoti = findViewById(R.id.biaoti);
 //        biaoti.setText("设置");
-        viewPager.setCurrentItem(4);
+       getSupportFragmentManager().beginTransaction()
+               .replace(R.id.container1,fragment5,"f5")
+               .commit();
+//        viewPager.setCurrentItem(4);
     }
 
 

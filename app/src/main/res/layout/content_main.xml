@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,18 +9,22 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <com.sm130.application130.viewpage.NoScrollViewPager
-        android:id="@+id/view_page"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+    <!--<com.sm130.application130.viewpage.NoScrollViewPager-->
+        <!--android:id="@+id/view_page"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1">-->
 
-    </com.sm130.application130.viewpage.NoScrollViewPager>
+    <!--</com.sm130.application130.viewpage.NoScrollViewPager>-->
 
     <FrameLayout
         android:id="@+id/container1"
-        android:layout_width="match_parent"
-        android:layout_height="500dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/rg_group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/rg_group"
@@ -28,9 +32,10 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bottom_tab_bg"
         android:gravity="center"
-        android:orientation="horizontal"
 
-        >
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <RadioButton
             android:id="@+id/rb_home"
@@ -105,4 +110,4 @@
     </RadioGroup>
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
