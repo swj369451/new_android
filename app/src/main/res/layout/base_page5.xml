@@ -10,6 +10,7 @@
 
 
    <!--<include layout="@layout/title_pager"/>-->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,16 +25,27 @@
             android:textSize="22sp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="设置" />
+            android:text="新闻中心" />
+
+        <ImageButton
+            android:id="@+id/btn_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_menu"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:layout_marginLeft="10dp"
+            android:onClick="draw"
+            />
 
 
     </RelativeLayout>
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="设置"
+        android:text="菜单详情页-专题"
         android:textSize="30sp"
         android:textColor="#f00"
         app:layout_constraintBottom_toBottomOf="parent"

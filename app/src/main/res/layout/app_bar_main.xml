@@ -7,31 +7,31 @@
     tools:context=".MainActivity">
 
     <!--Start 侧边栏-->
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme">
+    <!--<android.support.design.widget.AppBarLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:theme="@style/AppTheme">-->
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/title_red_bg"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-           <TextView
-               android:id="@+id/biaoti"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_gravity="center"
-               android:textSize="28sp"
-               android:text="标题"
-               android:textColor="#fff"
-               />
-        </android.support.v7.widget.Toolbar>
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?attr/actionBarSize"-->
+            <!--android:background="@drawable/title_red_bg"-->
+            <!--app:popupTheme="@style/AppTheme.PopupOverlay">-->
+           <!--<TextView-->
+               <!--android:id="@+id/biaoti"-->
+               <!--android:layout_width="wrap_content"-->
+               <!--android:layout_height="wrap_content"-->
+               <!--android:layout_gravity="center"-->
+               <!--android:textSize="28sp"-->
+               <!--android:text="标题"-->
+               <!--android:textColor="#fff"-->
+               <!--/>-->
+        <!--</android.support.v7.widget.Toolbar>-->
 
 
 
-    </android.support.design.widget.AppBarLayout>
+    <!--</android.support.design.widget.AppBarLayout>-->
     <!--End 侧边栏-->
     <include layout="@layout/content_main" />
 

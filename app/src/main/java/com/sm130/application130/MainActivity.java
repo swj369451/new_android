@@ -5,15 +5,19 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.constraint.Group;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -23,12 +27,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.webkit.WebViewFragment;
+import android.widget.FrameLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.sm130.application130.controller.GetMassage;
 import com.sm130.application130.domain.Data;
 import com.sm130.application130.domain.JsonRootBean;
+
 import com.sm130.application130.viewpage.NoScrollViewPager;
 
 import org.w3c.dom.ls.LSException;
@@ -40,6 +48,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private View view1,view2,view3,view4,view5;
+    private View view6,view7,view8;
     private NoScrollViewPager viewPager;
 
     private TextView biaoti;
@@ -47,9 +56,13 @@ public class MainActivity extends AppCompatActivity {
     private List<View> viewList;
 
     private JsonRootBean jsonRootBean;
+    private LayoutInflater inflater;
 //    侧边栏自定义
     NavigationView navigationView;
     DrawerLayout drawer;
+
+//    页面数据
+    FrameLayout frameLayoutContent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,17 +70,28 @@ public class MainActivity extends AppCompatActivity {
 
         jsonRootBean=GetMassage.getHome();
 //        Start 侧边栏
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
 //        找到侧边栏
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
+//        页面数据
+//        frameLayoutContent = findViewById(R.id.fl_content);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+
+//        fragment
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.container1,Fragement1.newInstance("hello world"),"f1")
+                .commit();
+
+
+
 
 
 
@@ -75,16 +99,19 @@ public class MainActivity extends AppCompatActivity {
 //        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 //        navigationView.setNavigationItemSelectedListener(this);
 
+//       初始化数据
         initData();
 
 
 //        StartViewPage
         viewPage();
-//        EndViewPage
+//        EndViewPagel'd
 
 
 
     }
+
+
 
     private void initData() {
 //        设置背景颜色
@@ -118,15 +145,20 @@ public class MainActivity extends AppCompatActivity {
                 }else  if (id == 1) {
                     // Handle the camera action
                     drawer.closeDrawers();
-                    System.out.println("2");
+//                    biaoti = findViewById(R.id.biaoti);
+//                    biaoti.setText("专题");
+                    viewPager.setCurrentItem(5);
                 }else if (id == 2) {
                     // Handle the camera action
                     drawer.closeDrawers();
-                    System.out.println("3");
+//                    biaoti = findViewById(R.id.biaoti);
+//                    biaoti.setText("组图");
+                    viewPager.setCurrentItem(6);
                 }else if (id == 3) {
-                    // Handle the camera action
                     drawer.closeDrawers();
-                    System.out.println("4");
+//                    biaoti = findViewById(R.id.biaoti);
+//                    biaoti.setText("互动");
+                    viewPager.setCurrentItem(7);
                 }
                     return true;
             }
@@ -143,6 +175,11 @@ public class MainActivity extends AppCompatActivity {
         view3 = inflater.inflate(R.layout.base_page2,null);
         view4 = inflater.inflate(R.layout.base_page3,null);
         view5 = inflater.inflate(R.layout.base_page4,null);
+        view6 = inflater.inflate(R.layout.base_page5,null);
+        view7 = inflater.inflate(R.layout.base_page6,null);
+        view8 = inflater.inflate(R.layout.base_page7,null);
+
+
 
 
         viewList = new ArrayList<>();
@@ -151,6 +188,11 @@ public class MainActivity extends AppCompatActivity {
         viewList.add(view3);
         viewList.add(view4);
         viewList.add(view5);
+        viewList.add(view6);
+        viewList.add(view7);
+        viewList.add(view8);
+
+
 
         PagerAdapter pagerAdapter = new PagerAdapter() {
 
@@ -275,37 +317,41 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     public void home(View view) {
-        biaoti = findViewById(R.id.biaoti);
-        biaoti.setText("首页");
+//        biaoti = findViewById(R.id.biaoti);
+//        biaoti.setText("首页");
         viewPager.setCurrentItem(0);
     }
 
     public void news(View view) {
-        biaoti = findViewById(R.id.biaoti);
-        biaoti.setText("新闻中心");
+
+
+//        biaoti = findViewById(R.id.biaoti);
+//        biaoti.setText("新闻中心");
         viewPager.setCurrentItem(1);
 //        getMassage.getData();
     }
     public void smart(View view) {
-        biaoti = findViewById(R.id.biaoti);
-        biaoti.setText("智慧服务");
+//        biaoti = findViewById(R.id.biaoti);
+//        biaoti.setText("智慧服务");
         viewPager.setCurrentItem(2);
     }
 
     public void gov(View view) {
-        biaoti = findViewById(R.id.biaoti);
-        biaoti.setText("政务");
+//        biaoti = findViewById(R.id.biaoti);
+//        biaoti.setText("政务");
         viewPager.setCurrentItem(3);
     }
 
     public void set(View view) {
-        biaoti = findViewById(R.id.biaoti);
-        biaoti.setText("设置");
+
+//        biaoti = findViewById(R.id.biaoti);
+//        biaoti.setText("设置");
         viewPager.setCurrentItem(4);
     }
 
 
-
-
+    public void draw(View view) {
+        drawer.openDrawer(Gravity.START);
+    }
 }
 
