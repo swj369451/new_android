@@ -13,6 +13,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 
 import com.sm130.application130.controller.GetMassage;
 import com.sm130.application130.domain.Data;
@@ -31,7 +32,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    private Boolean COL = true;
     private JsonRootBean jsonRootBean;
     private com.sm130.application130.zutu_domain.JsonRootBean zutuData;
 //    侧边栏自定义
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         newsFragment = NewsFragment.newInstance(jsonRootBean.getData().get(0).getChildren(),new Interface("新闻",true));
 
 //        组图的碎片
-        zutuFragment = ZutuFragment.newInstance(zutuData.getData());
+        zutuFragment = ZutuFragment.newInstance(zutuData.getData(),1);
 
 
 //        fragment
@@ -182,6 +183,28 @@ public class MainActivity extends AppCompatActivity {
 
     public void draw(View view) {
         drawer.openDrawer(Gravity.START);
+    }
+    public void changeRecycleView(View view) {
+
+        if(COL){
+            zutuFragment = ZutuFragment.newInstance(zutuData.getData(),2);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container1,zutuFragment,"f6")
+                    .commit();
+            drawer.closeDrawers();
+            COL=false;
+        }else{
+            zutuFragment = ZutuFragment.newInstance(zutuData.getData(),1);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container1,zutuFragment,"f6")
+                    .commit();
+            drawer.closeDrawers();
+            COL=true;
+        }
+
+
+
+
     }
 }
 
