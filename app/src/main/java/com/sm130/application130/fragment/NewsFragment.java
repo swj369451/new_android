@@ -19,8 +19,13 @@ import android.widget.TextView;
 
 import com.sm130.application130.MyFragmentManager;
 import com.sm130.application130.R;
+import com.sm130.application130.beijing_domain.Beijin;
+import com.sm130.application130.beijing_domain.Data;
 import com.sm130.application130.domain.Children;
 import com.sm130.application130.domain.Interface;
+import com.sm130.application130.beijing_domain.JsonRootBean;
+import com.sm130.application130.global.GlobalConstants;
+import com.sm130.application130.utils.URLUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -54,6 +59,7 @@ public class NewsFragment extends Fragment {
         TextView textView = root.findViewById(R.id.tv_title);
         ImageButton imageButton = root.findViewById(R.id.btn_menu);
 
+
 //        设置值
         textView.setText(in.getTitle());
 
@@ -65,23 +71,33 @@ public class NewsFragment extends Fragment {
         ViewPager viewPager = root.findViewById(R.id.news_viewpage);
         TabLayout tabLayout = root.findViewById(R.id.news_tablayout);
 
-        final List<DemoFragment> fragment1s = new ArrayList<>();
+//        final List<DemoFragment> fragment1s = new ArrayList<>();
+        final List<ViewPageFragment> viewPageFragments = new ArrayList<>();
 
 //        设置数据
         for (Children c:data){
             tabLayout.addTab(tabLayout.newTab().setText(c.getTitle()));
-            fragment1s.add(DemoFragment.newInstance(c.getUrl()));
+
+//            fragment1s.add(DemoFragment.newInstance(c.getUrl()));
+
+//            通过http请求获取数据
+            String url = GlobalConstants.TOMCAT_URL + c.getUrl();
+            JsonRootBean jsonRootBean = (JsonRootBean) URLUtils.getInstentForUrl(url, JsonRootBean.class);
+            viewPageFragments.add(ViewPageFragment.newInstance(jsonRootBean.getData()));
+
         }
 
         viewPager.setAdapter(new FragmentPagerAdapter(myFragmentManager.getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
-                return fragment1s.get(i);
+//                return fragment1s.get(i);
+                return viewPageFragments.get(i);
             }
 
             @Override
             public int getCount() {
-                return fragment1s.size();
+//                return fragment1s.size();
+                return viewPageFragments.size();
             }
 
             @Nullable

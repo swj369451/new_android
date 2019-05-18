@@ -42,7 +42,8 @@ public class AdvertisePagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
         ImageView imageView = new ImageView(container.getContext());
-        Bitmap bitmap = URLUtils.getHttpBitmap(data.get(position).getTopimage());
+//        这里设置con1000开始所以要取模
+        Bitmap bitmap = URLUtils.getHttpBitmap(data.get(position%data.size()).getTopimage());
         imageView.setImageBitmap(bitmap);
         container.addView(imageView);
         return imageView;

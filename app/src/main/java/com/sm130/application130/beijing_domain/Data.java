@@ -2,6 +2,7 @@
   * Copyright 2019 bejson.com 
   */
 package com.sm130.application130.beijing_domain;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/
  */
-public class Data {
+public class Data implements Serializable {
 
     private String countcommenturl;
     private String more;

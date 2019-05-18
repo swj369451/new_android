@@ -14,7 +14,7 @@ public class News {
 
     private boolean comment;
     private String commentlist;
-    private Date commenturl;
+    private String commenturl;
     private int id;
     private String listimage;
     private String pubdate;
@@ -35,12 +35,17 @@ public class News {
          return commentlist;
      }
 
-    public void setCommenturl(Date commenturl) {
-         this.commenturl = commenturl;
-     }
-     public Date getCommenturl() {
-         return commenturl;
-     }
+    public boolean isComment() {
+        return comment;
+    }
+
+    public String getCommenturl() {
+        return commenturl;
+    }
+
+    public void setCommenturl(String commenturl) {
+        this.commenturl = commenturl;
+    }
 
     public void setId(int id) {
          this.id = id;

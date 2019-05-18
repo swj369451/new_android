@@ -79,6 +79,6 @@ public class URLUtils{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return gson.fromJson(result.toString(), clazz);
+        return gson.fromJson(result, clazz);
     }
 }

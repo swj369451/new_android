@@ -36,6 +36,7 @@ public class NewsAdapter extends RecyclerView.Adapter {
 
     public NewsAdapter(Data beijin) {
         this.data = beijin.getNews();
+        this.beijin =beijin;
     }
 
 

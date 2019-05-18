@@ -31,7 +31,7 @@ public class DemoFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.demo, container, false);
+        View root = inflater.inflate(R.layout.content_viewpager_recyclerview, container, false);
 //        视图内的元素
         TextView textView = root.findViewById(R.id.demo);
 
