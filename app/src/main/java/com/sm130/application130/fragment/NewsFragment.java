@@ -7,20 +7,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.RotateAnimation;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.sm130.application130.MyFragmentManager;
 import com.sm130.application130.R;
-import com.sm130.application130.beijing_domain.Beijin;
-import com.sm130.application130.beijing_domain.Data;
 import com.sm130.application130.domain.Children;
 import com.sm130.application130.domain.Interface;
 import com.sm130.application130.beijing_domain.JsonRootBean;
@@ -36,7 +31,6 @@ public class NewsFragment extends Fragment {
     public static String CONTENT ="content";
     private List<Children> data;
     private Interface in;
-    MyFragmentManager myFragmentManager;
     private Activity mActivity;
 
     @Override
@@ -48,7 +42,6 @@ public class NewsFragment extends Fragment {
         data = new ArrayList<>();
         data = (List<Children>) getArguments().getSerializable("childrenList");
         in= (Interface) getArguments().getSerializable("Interface");
-        myFragmentManager = (MyFragmentManager) getArguments().getSerializable("fragmentManager");
     }
 
     @Nullable
@@ -87,7 +80,7 @@ public class NewsFragment extends Fragment {
 
         }
 
-        viewPager.setAdapter(new FragmentPagerAdapter(myFragmentManager.getSupportFragmentManager()) {
+        viewPager.setAdapter(new FragmentPagerAdapter(getFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
 //                return fragment1s.get(i);
@@ -113,12 +106,11 @@ public class NewsFragment extends Fragment {
         return root;
     }
 
-    public static NewsFragment newInstance(List<Children> childrenList, MyFragmentManager myFragmentManager, Interface in){
+    public static NewsFragment newInstance(List<Children> childrenList, Interface in){
         NewsFragment fragment = new NewsFragment();
         Bundle bundle = new Bundle();
 
         bundle.putSerializable("childrenList", (Serializable) childrenList);
-        bundle.putSerializable("fragmentManager", (Serializable) myFragmentManager);
         bundle.putSerializable("Interface", (Serializable) in);
         fragment.setArguments(bundle);
         return fragment;

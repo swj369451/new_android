@@ -2,6 +2,7 @@
   * Copyright 2019 bejson.com 
   */
 package com.sm130.application130.beijing_domain;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/
  */
-public class Topnews {
+public class Topnews implements Serializable {
 
     private boolean comment;
     private String commentlist;

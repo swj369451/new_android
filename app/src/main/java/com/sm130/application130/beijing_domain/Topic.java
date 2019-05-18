@@ -3,13 +3,15 @@
   */
 package com.sm130.application130.beijing_domain;
 
+import java.io.Serializable;
+
 /**
  * Auto-generated: 2019-05-17 21:10:17
  *
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/
  */
-public class Topic {
+public class Topic implements Serializable {
 
     private String description;
     private int id;

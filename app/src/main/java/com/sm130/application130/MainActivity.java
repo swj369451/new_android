@@ -65,8 +65,7 @@ public class MainActivity extends AppCompatActivity {
         fragment4 = Fragment1.newInstance(new Interface("人口管理",true));
         fragment5 = Fragment1.newInstance(new Interface("设置",false));
 
-        MyFragmentManager myFragmentManager = new MyFragmentManager(getSupportFragmentManager());
-        newsFragment = NewsFragment.newInstance(jsonRootBean.getData().get(0).getChildren(),myFragmentManager,new Interface("新闻",true));
+        newsFragment = NewsFragment.newInstance(jsonRootBean.getData().get(0).getChildren(),new Interface("新闻",true));
 
 
 //        fragment
