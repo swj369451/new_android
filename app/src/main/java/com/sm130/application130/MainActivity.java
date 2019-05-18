@@ -21,6 +21,7 @@ import com.sm130.application130.domain.JsonRootBean;
 
 import com.sm130.application130.fragment.Fragment1;
 import com.sm130.application130.fragment.NewsFragment;
+import com.sm130.application130.fragment.ZutuFragment;
 import com.sm130.application130.global.GlobalConstants;
 import com.sm130.application130.utils.URLUtils;
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private JsonRootBean jsonRootBean;
+    private com.sm130.application130.zutu_domain.JsonRootBean zutuData;
 //    侧边栏自定义
     NavigationView navigationView;
     DrawerLayout drawer;
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
 //    公共碎片
     Fragment1 fragment1,fragment2,fragment3,fragment4,fragment5;
     NewsFragment newsFragment;
+    ZutuFragment zutuFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
 //        jsonRootBean=GetMassage.getHome();
 //        使用OkHttp发送get请求
         jsonRootBean= (JsonRootBean) URLUtils.getInstentForUrl(GlobalConstants.CATEGORY_URL,JsonRootBean.class);
+        zutuData = (com.sm130.application130.zutu_domain.JsonRootBean)
+                URLUtils.getInstentForUrl(GlobalConstants.TOMCAT_URL+"/photos/photos_1.json", com.sm130.application130.zutu_domain.JsonRootBean.class);
 
 //        找到侧边栏
         navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -65,7 +71,11 @@ public class MainActivity extends AppCompatActivity {
         fragment4 = Fragment1.newInstance(new Interface("人口管理",true));
         fragment5 = Fragment1.newInstance(new Interface("设置",false));
 
+//        新闻碎片
         newsFragment = NewsFragment.newInstance(jsonRootBean.getData().get(0).getChildren(),new Interface("新闻",true));
+
+//        组图的碎片
+        zutuFragment = ZutuFragment.newInstance(zutuData.getData());
 
 
 //        fragment
@@ -117,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
 //                    viewPager.setCurrentItem(5);
                 }else if (id == 2) {
                     // Handle the camera action
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.container1,zutuFragment,"f6")
+                            .commit();
                     drawer.closeDrawers();
 //                    biaoti = findViewById(R.id.biaoti);
 //                    biaoti.setText("组图");
