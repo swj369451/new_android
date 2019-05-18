@@ -39,7 +39,6 @@ public class ViewPageFragment extends Fragment {
 //        视图内的元素
         RecyclerView view = root.findViewById(R.id.content_recyclerView);
 
-
 //        设置属性
         final NewsAdapter newsAdapter = new NewsAdapter(data);
         view.setAdapter(newsAdapter);

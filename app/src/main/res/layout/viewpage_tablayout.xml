@@ -48,12 +48,12 @@
         android:id="@+id/news_viewpage"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
-        <FrameLayout
-            android:id="@+id/news_content_framelayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <!--<FrameLayout-->
+            <!--android:id="@+id/news_content_framelayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
 
-        </FrameLayout>
+        <!--</FrameLayout>-->
     </android.support.v4.view.ViewPager>
 
 </LinearLayout>

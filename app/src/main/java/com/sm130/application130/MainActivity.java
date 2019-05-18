@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        fragment
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.container1,fragment1,"f1")
+                .add(R.id.container1,fragment1,"f0")
                 .addToBackStack(Fragment1.class.getSimpleName())
                 .commit();
 //       初始化数据

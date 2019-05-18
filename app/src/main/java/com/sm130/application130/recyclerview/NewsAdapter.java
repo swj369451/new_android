@@ -1,7 +1,9 @@
 package com.sm130.application130.recyclerview;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import com.sm130.application130.R;
 import com.sm130.application130.beijing_domain.Data;
 import com.sm130.application130.beijing_domain.News;
+import com.sm130.application130.fragment.WebViewFragment;
 import com.sm130.application130.utils.URLUtils;
 
 import java.lang.reflect.Type;
@@ -97,12 +100,23 @@ public class NewsAdapter extends RecyclerView.Adapter {
         }else if(type == FOOT_TYPE){
 
         }else {
-            News news = data.get(position-1);
+            final News news = data.get(position-1);
             NewsViewHolder newsViewHolder = (NewsViewHolder) holder;
             Bitmap bitmap = URLUtils.getHttpBitmap(news.getListimage());
             newsViewHolder.imageView.setImageBitmap(bitmap);
             newsViewHolder.textView.setText(news.getTitle());
             newsViewHolder.textView2.setText(news.getPubdate());
+            newsViewHolder.view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    打开详情页面
+//                    WebViewFragment webViewFragment = WebViewFragment.newInstance(news.getUrl());
+//                    getSupportFragmentManager().beginTransaction()
+//                            .replace(R.id.container1,webViewFragment,"f5")
+//                            .commit();
+                    System.out.println(1);
+                }
+            });
 
         }
     }
@@ -112,12 +126,14 @@ public class NewsAdapter extends RecyclerView.Adapter {
         ImageView imageView;
         TextView textView;
         TextView textView2;
+        View view;
 
         public NewsViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView_item);
             textView = itemView.findViewById(R.id.textView1_item);
             textView2 = itemView.findViewById(R.id.textView2_item);
+            view = itemView.findViewById(R.id.view);
         }
 
     }
