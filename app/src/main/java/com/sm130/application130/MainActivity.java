@@ -21,7 +21,10 @@ import com.sm130.application130.domain.JsonRootBean;
 
 import com.sm130.application130.fragment.Fragment1;
 import com.sm130.application130.fragment.NewsFragment;
+import com.sm130.application130.global.GlobalConstants;
+import com.sm130.application130.utils.URLUtils;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -41,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        jsonRootBean=GetMassage.getHome();
+//        jsonRootBean=GetMassage.getHome();
+//        使用OkHttp发送get请求
+        jsonRootBean= (JsonRootBean) URLUtils.getInstentForUrl(GlobalConstants.CATEGORY_URL,JsonRootBean.class);
 
 //        找到侧边栏
         navigationView = (NavigationView) findViewById(R.id.nav_view);
