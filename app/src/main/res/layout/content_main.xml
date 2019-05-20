@@ -16,16 +16,23 @@
         <!--android:layout_weight="1">-->
 
     <!--</com.sm130.application130.viewpage.NoScrollViewPager>-->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
 
     <FrameLayout
         android:id="@+id/container1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/rg_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    </android.support.v4.widget.SwipeRefreshLayout>
     <RadioGroup
         android:id="@+id/rg_group"
         android:layout_width="match_parent"

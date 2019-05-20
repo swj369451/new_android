@@ -17,7 +17,10 @@ import android.widget.Toast;
 
 import com.sm130.application130.R;
 import com.sm130.application130.beijing_domain.Data;
+import com.sm130.application130.beijing_domain.JsonRootBean;
+import com.sm130.application130.global.GlobalConstants;
 import com.sm130.application130.recyclerview.NewsAdapter;
+import com.sm130.application130.utils.URLUtils;
 
 public class ViewPageFragment extends Fragment {
     public static String DATA  = "data";
@@ -52,9 +55,17 @@ public class ViewPageFragment extends Fragment {
                 super.onScrollStateChanged(recyclerView, newState);
                 int lastVisibleItemPosition = linearLayoutManager.findLastVisibleItemPosition();
                 if(lastVisibleItemPosition + 1 == newsAdapter.getItemCount()){
-//                    没有更新的了
-                    Toast.makeText(getContext(), "已经没有更新的了", Toast.LENGTH_SHORT).show();
-                    newsAdapter.notifyItemRemoved(newsAdapter.getItemCount());
+                    if(data.getNews().size()>15){
+                        Toast.makeText(getContext(), "已经没有更新的了", Toast.LENGTH_SHORT).show();
+                        newsAdapter.notifyItemRemoved(newsAdapter.getItemCount());
+                    }else{
+                        //                    没有更新的了
+                        JsonRootBean more = (JsonRootBean) URLUtils.getInstentForUrl(GlobalConstants.TOMCAT_URL + data.getMore(), JsonRootBean.class);
+                        data.getNews().addAll(more.getData().getNews());
+//
+                        newsAdapter.notifyItemInserted(newsAdapter.getItemCount()+1);
+                    }
+
                 }
             }
 

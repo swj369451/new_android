@@ -4,8 +4,10 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Gravity;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.sm130.application130.controller.GetMassage;
 import com.sm130.application130.domain.Data;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private Boolean COL = true;
     private JsonRootBean jsonRootBean;
     private com.sm130.application130.zutu_domain.JsonRootBean zutuData;
+    private SwipeRefreshLayout refreshLayout;
 //    侧边栏自定义
     NavigationView navigationView;
     DrawerLayout drawer;
@@ -59,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
+//        下拉刷新
+        refreshLayout = findViewById(R.id.refreshLayout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -87,9 +93,21 @@ public class MainActivity extends AppCompatActivity {
 //       初始化数据
         initData();
 
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        refreshLayout.setRefreshing(false);
+                    }
+                },2000);
+            }
+        });
+
     }
-
-
+    
 
     private void initData() {
 //        设置背景颜色
@@ -116,8 +134,9 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
                 if (id == 0) {
-                    // Handle the camera action
-//                    关闭抽屉
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.container1,newsFragment,"f2")
+                            .commit();
                     drawer.closeDrawers();
 //                    System.out.println("1");
                 }else  if (id == 1) {
