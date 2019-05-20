@@ -1,6 +1,7 @@
 package com.sm130.application130.recyclerview;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
@@ -9,14 +10,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sm130.application130.NewActivity;
 import com.sm130.application130.R;
 import com.sm130.application130.beijing_domain.Data;
 import com.sm130.application130.beijing_domain.News;
+import com.sm130.application130.fragment.DemoFragment;
 import com.sm130.application130.fragment.WebViewFragment;
+import com.sm130.application130.global.GlobalConstants;
 import com.sm130.application130.utils.URLUtils;
 
 import java.lang.reflect.Type;
@@ -106,6 +111,7 @@ public class NewsAdapter extends RecyclerView.Adapter {
             newsViewHolder.imageView.setImageBitmap(bitmap);
             newsViewHolder.textView.setText(news.getTitle());
             newsViewHolder.textView2.setText(news.getPubdate());
+
             newsViewHolder.view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

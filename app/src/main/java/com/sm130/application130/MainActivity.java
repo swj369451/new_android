@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
 //        biaoti = findViewById(R.id.biaoti);
 //        biaoti.setText("首页");
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container1,fragment1,"f1")
+                .replace(R.id.container1,fragment1,"f0")
                 .commit();
     }
 
