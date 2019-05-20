@@ -38,7 +38,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="50dp"
             android:background="@null"
-            android:onClick="draw"
+            android:onClick="text"
             android:src="@drawable/icon_textsize" />
 
         <ImageButton

@@ -64,8 +64,8 @@ public class ViewPageFragment extends Fragment {
                         //                    没有更新的了
                         JsonRootBean more = (JsonRootBean) URLUtils.getInstentForUrl(GlobalConstants.TOMCAT_URL + data.getMore(), JsonRootBean.class);
                         data.getNews().addAll(more.getData().getNews());
-//
-                        newsAdapter.notifyItemInserted(newsAdapter.getItemCount()+1);
+                        newsAdapter.notifyDataSetChanged();
+//                        newsAdapter.notifyItemInserted(newsAdapter.getItemCount()+1);
                     }
 
                 }
