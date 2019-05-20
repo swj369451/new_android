@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sm130.application130.NewActivity;
+import com.sm130.application130.NewsDetailActiivity;
 import com.sm130.application130.R;
 import com.sm130.application130.beijing_domain.Data;
 import com.sm130.application130.beijing_domain.News;
@@ -41,10 +42,13 @@ public class NewsAdapter extends RecyclerView.Adapter {
 
     private List<News> data;
     private Data beijin;
+    private Activity activity;
 
-    public NewsAdapter(Data beijin) {
+    public NewsAdapter(Data beijin,Activity activity) {
         this.data = beijin.getNews();
         this.beijin =beijin;
+        this.activity = activity;
+
     }
 
 
@@ -115,6 +119,10 @@ public class NewsAdapter extends RecyclerView.Adapter {
             newsViewHolder.view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent intent = new Intent(activity, NewsDetailActiivity.class);
+                    intent.putExtra("url",news.getUrl());
+                    activity.startActivity(intent);
+
 //                    打开详情页面
 //                    WebViewFragment webViewFragment = WebViewFragment.newInstance(news.getUrl());
 //                    getSupportFragmentManager().beginTransaction()
@@ -126,6 +134,9 @@ public class NewsAdapter extends RecyclerView.Adapter {
 
         }
     }
+
+
+
 
     class NewsViewHolder extends RecyclerView.ViewHolder{
 

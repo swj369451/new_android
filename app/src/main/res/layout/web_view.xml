@@ -20,14 +20,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/btn_menu"
+            android:id="@+id/btn_menu1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:background="@null"
-            android:onClick="draw"
+            android:onClick="back"
             android:src="@drawable/back" />
 
         <ImageButton
@@ -58,6 +58,9 @@
         android:id="@+id/web_view"
         android:layout_width="match_parent"
         android:layout_height="676dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
 
 </android.support.constraint.ConstraintLayout>

@@ -23,8 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.sm130.application130.NewsDetailActiivity"
+            android:label="newsdetail"
+            />
         <activity android:name=".GuideActivity"/>
         <activity android:name=".MainActivity"/>
+
     </application>
 
 </manifest>
