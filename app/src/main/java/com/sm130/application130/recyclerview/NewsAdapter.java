@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sm130.application130.NewActivity;
@@ -38,7 +41,7 @@ public class NewsAdapter extends RecyclerView.Adapter {
     public static final int HEAD_TYPE = 0;
     public static final int BODY_TYPE = 1;
     public static final int FOOT_TYPE = 2;
-
+    private  int mPointDis;
 
     private List<News> data;
     private Data beijin;
@@ -70,8 +73,57 @@ public class NewsAdapter extends RecyclerView.Adapter {
             View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_recyclerview_head, viewGroup, false);
 
             ViewPager viewPager = view.findViewById(R.id.news_content_viewpage);
+            viewPager.setAdapter(new AdvertisePagerAdapter(beijin.getTopnews(),view));
+//            final ImageView ivRedpoint = view.findViewById(R.id.ivv_red_point);
 
-            viewPager.setAdapter(new AdvertisePagerAdapter(beijin.getTopnews()));
+
+////            画灰点
+//            ArrayList<ImageView> imageViewArrayList = new ArrayList<>();
+//            for (int j = 0; j < beijin.getTopnews().size(); j++) {
+//
+////            初始化小圆点
+//                ImageView point = new ImageView(activity);
+////            设置图片shape形状
+//                point.setImageResource(R.drawable.shape_point_gray);
+//                LinearLayout lll_container = view.findViewById(R.id.lll_container);
+//                lll_container.addView(point);
+////                修改位置
+//                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) point.getLayoutParams();
+//                params.rightMargin=25;
+//                params.topMargin=23;
+//                point.setLayoutParams(params);
+//            }
+//
+////            设置小红点
+//            viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//                @Override
+//                public void onPageScrolled(int i, float v, int i1) {
+//                    //            当页面滑动过程中的回调
+////                更新小红点的位置
+////                    int leftMargin = (int)(mPointDis*v)+(i%data.size())*mPointDis;//计算左边边距
+//                    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ivRedpoint.getLayoutParams();
+//                    int a = params.rightMargin;
+//                    int size = beijin.getTopnews().size();
+//                    int c = ((i-1000)%size)*25;
+//                    params.rightMargin = c+30;//修改左边距
+//
+//
+//
+////                重新设置布局参数
+//                    ivRedpoint.setLayoutParams(params);
+//                }
+//
+//                @Override
+//                public void onPageSelected(int i) {
+//
+//                }
+//
+//                @Override
+//                public void onPageScrollStateChanged(int i) {
+//
+//                }
+//            });
+
             viewPager.setCurrentItem(10000);
             return new HeadViewHolder(view);
 

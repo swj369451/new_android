@@ -49,8 +49,8 @@ public class GuideActivity extends Activity {
         btnStart = findViewById(R.id.btn_start);
 
 //        先初始化数据
-//        Data();
-//        设置数据
+        initData();
+
         mViewPage.setAdapter(new GuideAdapter());
 
         mViewPage.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {

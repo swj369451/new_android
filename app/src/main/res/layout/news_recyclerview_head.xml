@@ -1,8 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.view.ViewPager
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="240dp"
-    android:id="@+id/news_content_viewpage"
+    android:id="@+id/ConLayout"
     >
-</android.support.v4.view.ViewPager>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/news_content_viewpage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </android.support.v4.view.ViewPager>
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="#A1000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/biaoti_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="标题"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view3" />
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/lll_container"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_marginEnd="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/view3"-->
+        <!--app:layout_constraintEnd_toEndOf="@+id/view3"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/view3"></LinearLayout>-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/ivv_red_point"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/shape_point_red"-->
+        <!--android:layout_marginEnd="30dp"-->
+        <!--android:layout_marginRight="30dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/view3"-->
+        <!--app:layout_constraintEnd_toEndOf="@+id/view3"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/view3"-->
+        <!--/>-->
+</android.support.constraint.ConstraintLayout>
