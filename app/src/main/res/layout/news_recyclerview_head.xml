@@ -37,26 +37,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view3" />
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/lll_container"-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_marginEnd="20dp"-->
-        <!--android:layout_marginRight="20dp"-->
-        <!--android:orientation="horizontal"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/view3"-->
-        <!--app:layout_constraintEnd_toEndOf="@+id/view3"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/view3"></LinearLayout>-->
-
-    <!--<ImageView-->
-        <!--android:id="@+id/ivv_red_point"-->
+    <!--<com.viewpagerindicator.CirclePageIndicator-->
+        <!--android:id="@+id/indicator"-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
-        <!--android:src="@drawable/shape_point_red"-->
-        <!--android:layout_marginEnd="30dp"-->
-        <!--android:layout_marginRight="30dp"-->
+        <!--app:fillColor="#f00"-->
         <!--app:layout_constraintBottom_toBottomOf="@+id/view3"-->
-        <!--app:layout_constraintEnd_toEndOf="@+id/view3"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
         <!--app:layout_constraintTop_toTopOf="@+id/view3"-->
-        <!--/>-->
+        <!--app:pageColor="#cccccc"-->
+        <!--app:radius="3dp" />-->
+    <LinearLayout
+        android:id="@+id/lll_container"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintTop_toTopOf="@+id/view3">
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivv_red_point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:src="@drawable/shape_point_red"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintTop_toTopOf="@+id/view3" />
 </android.support.constraint.ConstraintLayout>

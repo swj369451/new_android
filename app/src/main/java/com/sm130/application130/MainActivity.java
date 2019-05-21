@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Gravity;
@@ -28,6 +29,7 @@ import com.sm130.application130.fragment.NewsFragment;
 import com.sm130.application130.fragment.ZutuFragment;
 import com.sm130.application130.global.GlobalConstants;
 import com.sm130.application130.utils.URLUtils;
+import com.viewpagerindicator.CirclePageIndicator;
 
 import java.io.IOException;
 import java.util.List;
@@ -110,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
     
 
     private void initData() {
+
 //        设置背景颜色
         navigationView.setBackgroundColor(Color.BLACK);
 
@@ -176,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void news(View view) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container1,newsFragment,"f2")
+                .replace(R.id.container1,newsFragment)
                 .commit();
 
     }
