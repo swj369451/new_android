@@ -68,10 +68,13 @@ public class NewsAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         if(i == HEAD_TYPE) {
             View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_recyclerview_head, viewGroup, false);
+
             ViewPager viewPager = view.findViewById(R.id.news_content_viewpage);
+
             viewPager.setAdapter(new AdvertisePagerAdapter(beijin.getTopnews()));
             viewPager.setCurrentItem(10000);
             return new HeadViewHolder(view);
+
         }else if(i==FOOT_TYPE){
             View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_recyclerview_foot, viewGroup, false);
             return new FootViewHolder(view);
