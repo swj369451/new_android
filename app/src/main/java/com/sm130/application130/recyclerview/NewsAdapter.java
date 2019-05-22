@@ -3,6 +3,7 @@ package com.sm130.application130.recyclerview;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentManager;
@@ -183,7 +184,7 @@ public class NewsAdapter extends RecyclerView.Adapter {
 
         }else {
             final News news = data.get(position-1);
-            NewsViewHolder newsViewHolder = (NewsViewHolder) holder;
+            final NewsViewHolder newsViewHolder = (NewsViewHolder) holder;
             Bitmap bitmap = URLUtils.getHttpBitmap(news.getListimage());
             newsViewHolder.imageView.setImageBitmap(bitmap);
             newsViewHolder.textView.setText(news.getTitle());
@@ -195,13 +196,15 @@ public class NewsAdapter extends RecyclerView.Adapter {
                     Intent intent = new Intent(activity, NewsDetailActiivity.class);
                     intent.putExtra("url",news.getUrl());
                     activity.startActivity(intent);
-
+//                    修改为已读状态
+                    newsViewHolder.textView.setTextColor(Color.GRAY);
+                    newsViewHolder.textView2.setTextColor(Color.GRAY);
 //                    打开详情页面
 //                    WebViewFragment webViewFragment = WebViewFragment.newInstance(news.getUrl());
 //                    getSupportFragmentManager().beginTransaction()
 //                            .replace(R.id.container1,webViewFragment,"f5")
 //                            .commit();
-                    System.out.println(1);
+//                    System.out.println(1);
                 }
             });
 
