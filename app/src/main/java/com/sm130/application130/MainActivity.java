@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
     NewsFragment newsFragment;
     ZutuFragment zutuFragment;
 
+
+    Fragment currentFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,16 +85,36 @@ public class MainActivity extends AppCompatActivity {
 
 //        新闻碎片
         newsFragment = NewsFragment.newInstance(jsonRootBean.getData().get(0).getChildren(),new Interface("新闻",true));
-
 //        组图的碎片
         zutuFragment = ZutuFragment.newInstance(zutuData.getData(),1);
 
-
-//        fragment
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.container1,fragment1,"f0")
-                .addToBackStack(Fragment1.class.getSimpleName())
-                .commit();
+                .add(R.id.container1,fragment1)
+                .add(R.id.container1,fragment2)
+                .add(R.id.container1,fragment3)
+                .add(R.id.container1,fragment4)
+                .add(R.id.container1,fragment5)
+                .add(R.id.container1,newsFragment)
+                .add(R.id.container1,zutuFragment)
+//                .hide(fragment1)
+                .hide(fragment2)
+                .hide(fragment3)
+                .hide(fragment5)
+                .hide(newsFragment)
+                .hide(fragment4)
+                .hide(zutuFragment)
+                .commit()
+        ;
+
+        currentFragment = new Fragment();
+
+
+        currentFragment=fragment1;
+//        fragment
+//        getSupportFragmentManager().beginTransaction()
+//                .add(R.id.container1,fragment1,"f0")
+//                .addToBackStack(Fragment1.class.getSimpleName())
+//                .commit();
 //       初始化数据
         initData();
 
@@ -138,30 +161,31 @@ public class MainActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 if (id == 0) {
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container1,newsFragment,"f2")
-                            .commit();
-                    drawer.closeDrawers();
-//                    System.out.println("1");
+                    .hide(currentFragment)
+                    .show(newsFragment)
+                    .commit();
+                     currentFragment=newsFragment;
+                     drawer.closeDrawers();
                 }else  if (id == 1) {
                     // Handle the camera action
                     drawer.closeDrawers();
 //                    biaoti = findViewById(R.id.biaoti);
 //                    biaoti.setText("专题");
 //                    viewPager.setCurrentItem(5);
-                }else if (id == 2) {
-                    // Handle the camera action
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container1,zutuFragment,"f6")
-                            .commit();
                     drawer.closeDrawers();
-//                    biaoti = findViewById(R.id.biaoti);
-//                    biaoti.setText("组图");
-//                    viewPager.setCurrentItem(6);
+                }else if (id == 2) {
+                    getSupportFragmentManager().beginTransaction()
+                            .hide(currentFragment)
+                            .show(zutuFragment)
+                            .commit();
+                    currentFragment=zutuFragment;
+                    drawer.closeDrawers();
                 }else if (id == 3) {
                     drawer.closeDrawers();
 //                    biaoti = findViewById(R.id.biaoti);
 //                    biaoti.setText("互动");
 //                    viewPager.setCurrentItem(7);
+
                 }
                     return true;
             }
@@ -173,33 +197,42 @@ public class MainActivity extends AppCompatActivity {
 //        biaoti = findViewById(R.id.biaoti);
 //        biaoti.setText("首页");
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container1,fragment1,"f0")
+                .hide(currentFragment)
+                .show(fragment1)
                 .commit();
+        currentFragment=fragment1;
     }
 
     public void news(View view) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container1,newsFragment)
+                .hide(currentFragment)
+                .show(newsFragment)
                 .commit();
-
+        currentFragment=newsFragment;
     }
     public void smart(View view) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container1,fragment3,"f3")
+                .hide(currentFragment)
+                .show(fragment3)
                 .commit();
+        currentFragment=fragment3;
     }
 
     public void gov(View view) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container1,fragment4,"f4")
+                .hide(currentFragment)
+                .show(fragment4)
                 .commit();
+        currentFragment=fragment4;
     }
 
     public void set(View view) {
 
-       getSupportFragmentManager().beginTransaction()
-               .replace(R.id.container1,fragment5,"f5")
-               .commit();
+        getSupportFragmentManager().beginTransaction()
+                .hide(currentFragment)
+                .show(fragment5)
+                .commit();
+        currentFragment=fragment5;
     }
 
 

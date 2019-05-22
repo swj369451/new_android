@@ -75,7 +75,6 @@ public class NewsAdapter extends RecyclerView.Adapter {
 
             ViewPager viewPager = view.findViewById(R.id.news_content_viewpage);
             viewPager.setAdapter(new AdvertisePagerAdapter(beijin.getTopnews(),view));
-
 //            CirclePageIndicator mIndicator =view.findViewById(R.id.indicator);
 //            mIndicator.setViewPager(viewPager);
 //            mIndicator.setSnap(true);

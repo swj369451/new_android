@@ -45,6 +45,9 @@ public class NewsFragment extends Fragment {
         in= (Interface) getArguments().getSerializable("Interface");
     }
 
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
