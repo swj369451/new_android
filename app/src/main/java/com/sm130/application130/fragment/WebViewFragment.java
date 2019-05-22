@@ -2,6 +2,7 @@ package com.sm130.application130.fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,9 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.sm130.application130.R;
+import com.sm130.application130.ShareActivity;
 
 public class WebViewFragment extends Fragment {
     public static String DATA  = "data";
@@ -29,10 +32,11 @@ public class WebViewFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.web_view, container, false);
 //        视图内的元素
         WebView webView = root.findViewById(R.id.web_view);
+
 
 
 //        设置值

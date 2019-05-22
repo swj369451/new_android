@@ -37,8 +37,12 @@ public class NewsDetailActiivity extends Activity {
 
     }
 
-    public void back(View view) {
+    public void share(View view) {
+        Intent intent = new Intent(this, ShareActivity.class);
+        this.startActivity(intent);
+    }
 
+    public void back(View view) {
         finish();
     }
     public void text(View view) {

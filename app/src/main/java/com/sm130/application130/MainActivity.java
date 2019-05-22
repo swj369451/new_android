@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 //        组图的碎片
         zutuFragment = ZutuFragment.newInstance(zutuData.getData(),1);
 
+//        预先加载fragment
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container1,fragment1)
                 .add(R.id.container1,fragment2)
@@ -106,9 +107,8 @@ public class MainActivity extends AppCompatActivity {
                 .commit()
         ;
 
+//        当前的fragment
         currentFragment = new Fragment();
-
-
         currentFragment=fragment1;
 //        fragment
 //        getSupportFragmentManager().beginTransaction()
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 //       初始化数据
         initData();
 
-
+//        下拉刷新
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

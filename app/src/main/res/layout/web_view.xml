@@ -49,7 +49,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:background="@null"
-            android:onClick="draw"
+            android:onClick="share"
             android:src="@drawable/icon_share" />
 
     </RelativeLayout>
