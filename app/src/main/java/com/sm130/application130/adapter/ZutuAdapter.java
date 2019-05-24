@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sm130.application130.R;
+import com.sm130.application130.global.GlobalConstants;
+import com.sm130.application130.u.MyBitmapUtils;
 import com.sm130.application130.utils.URLUtils;
 import com.sm130.application130.zutu_domain.News;
 
@@ -37,8 +39,11 @@ public class ZutuAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         News news = data.get(i);
         ZutuViewHolder zutuViewHolder = (ZutuViewHolder) viewHolder;
-        Bitmap bitmap = URLUtils.getHttpBitmap(news.getListimage());
-        zutuViewHolder.imageView.setImageBitmap(bitmap);
+//        Bitmap bitmap = URLUtils.getHttpBitmap(news.getListimage());
+//        zutuViewHolder.imageView.setImageBitmap(bitmap);
+//        URLUtils.getHttpBitmap(zutuViewHolder.imageView,GlobalConstants.TOMCAT_URL+news.getListimage().substring(25));
+        new MyBitmapUtils().display(zutuViewHolder.imageView,GlobalConstants.TOMCAT_URL+news.getListimage().substring(25));
+
         zutuViewHolder.textView.setText(news.getTitle());
     }
 

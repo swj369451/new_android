@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.StrictMode;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.sm130.application130.controller.GetMassage;
@@ -34,8 +35,33 @@ public class URLUtils{
      * @param url
      * @return
      */
-    public static Bitmap getHttpBitmap(String url) {
+    public static void getHttpBitmap(final ImageView imageView, final String url) {
             try {
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        OkHttpClient okHttpClient = new OkHttpClient();
+                        Request request = new Request.Builder()
+                                .url(url)
+                                .build();
+                        okHttpClient.newCall(request).enqueue(new Callback() {
+                            public void onFailure(Call call, IOException e) {
+
+                            }
+                            public void onResponse(Call call, Response response) throws IOException {
+                                InputStream inputStream = response.body().byteStream();//得到图片的流
+                                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                                imageView.setImageBitmap(bitmap);
+                            }
+                        });
+                    }
+                });
+
+
+
+
+
 //                URL myFileUrl = new URL(url);
 //                final Bitmap bitmap = null;
 //                HttpURLConnection conn = (HttpURLConnection) myFileUrl.openConnection();
@@ -52,26 +78,26 @@ public class URLUtils{
 //                    }
 //                };
 //            return bitmap;
-
-                OkHttpClient okHttpClient = new OkHttpClient();
-                Request request = new Request.Builder().url(url).build();
-                Bitmap bitmap;
-                final Call call = okHttpClient.newCall(request);
-
-
-
-                Callable<Bitmap> callable = new Callable<Bitmap>() {
-                    @Override
-                    public Bitmap call() throws Exception {
-                        Response response = call.execute();
-                        return BitmapFactory.decodeStream( response.body().byteStream());
-                    }
-                };
-
-                ExecutorService es = Executors.newSingleThreadExecutor();
-                Future<Bitmap> submit = es.submit(callable);
-
-                return submit.get();
+//            -------------------------------------------------------------
+//                OkHttpClient okHttpClient = new OkHttpClient();
+//                Request request = new Request.Builder().url(url).build();
+//                Bitmap bitmap;
+//                final Call call = okHttpClient.newCall(request);
+//
+//
+//
+//                Callable<Bitmap> callable = new Callable<Bitmap>() {
+//                    @Override
+//                    public Bitmap call() throws Exception {
+//                        Response response = call.execute();
+//                        return BitmapFactory.decodeStream( response.body().byteStream());
+//                    }
+//                };
+//
+//                ExecutorService es = Executors.newSingleThreadExecutor();
+//                Future<Bitmap> submit = es.submit(callable);
+//
+//                return submit.get();
 
             }catch (Exception e){
             throw new RuntimeException(e);

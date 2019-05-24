@@ -27,6 +27,7 @@ import com.sm130.application130.beijing_domain.News;
 import com.sm130.application130.fragment.DemoFragment;
 import com.sm130.application130.fragment.WebViewFragment;
 import com.sm130.application130.global.GlobalConstants;
+import com.sm130.application130.u.MyBitmapUtils;
 import com.sm130.application130.utils.URLUtils;
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -161,9 +162,10 @@ public class NewsAdapter extends RecyclerView.Adapter {
         NewsViewHolder newsViewHolder = (NewsViewHolder) viewHolder;
 
 //        设置图片
-        Bitmap bitmap = URLUtils.getHttpBitmap(news.getListimage());
-        newsViewHolder.imageView.setImageBitmap(bitmap);
-
+//        Bitmap bitmap = URLUtils.getHttpBitmap(news.getListimage());
+//        newsViewHolder.imageView.setImageBitmap(bitmap);
+//        URLUtils.getHttpBitmap(newsViewHolder.imageView,GlobalConstants.TOMCAT_URL+news.getListimage().substring(25));
+        new MyBitmapUtils().display(newsViewHolder.imageView,GlobalConstants.TOMCAT_URL+news.getListimage().substring(25));
         newsViewHolder.textView.setText(news.getTitle());
         newsViewHolder.textView2.setText(news.getPubdate());
 
@@ -185,8 +187,11 @@ public class NewsAdapter extends RecyclerView.Adapter {
         }else {
             final News news = data.get(position-1);
             final NewsViewHolder newsViewHolder = (NewsViewHolder) holder;
-            Bitmap bitmap = URLUtils.getHttpBitmap(news.getListimage());
-            newsViewHolder.imageView.setImageBitmap(bitmap);
+//            Bitmap bitmap = URLUtils.getHttpBitmap(news.getListimage());
+//            newsViewHolder.imageView.setImageBitmap(bitmap);
+
+//            URLUtils.getHttpBitmap(newsViewHolder.imageView,GlobalConstants.TOMCAT_URL+news.getListimage().substring(25));
+            new MyBitmapUtils().display(newsViewHolder.imageView,GlobalConstants.TOMCAT_URL+news.getListimage().substring(25));
             newsViewHolder.textView.setText(news.getTitle());
             newsViewHolder.textView2.setText(news.getPubdate());
 

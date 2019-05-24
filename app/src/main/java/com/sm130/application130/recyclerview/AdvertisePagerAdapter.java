@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.sm130.application130.R;
 import com.sm130.application130.beijing_domain.Topnews;
+import com.sm130.application130.global.GlobalConstants;
+import com.sm130.application130.u.MyBitmapUtils;
 import com.sm130.application130.utils.URLUtils;
 
 import java.util.ArrayList;
@@ -53,8 +55,10 @@ public class AdvertisePagerAdapter extends PagerAdapter {
 
         ImageView imageView = new ImageView(container.getContext());
 //        这里设置con1000开始所以要取模
-        Bitmap bitmap = URLUtils.getHttpBitmap(data.get(position%data.size()).getTopimage());
-        imageView.setImageBitmap(bitmap);
+//        Bitmap bitmap = URLUtils.getHttpBitmap(data.get(position%data.size()).getTopimage());
+//        imageView.setImageBitmap(bitmap);
+//        URLUtils.getHttpBitmap(imageView, GlobalConstants.TOMCAT_URL+data.get(position%data.size()).getTopimage().substring(25));
+        new MyBitmapUtils().display(imageView,GlobalConstants.TOMCAT_URL+data.get(position%data.size()).getTopimage().substring(25));
         container.addView(imageView);
 
 
