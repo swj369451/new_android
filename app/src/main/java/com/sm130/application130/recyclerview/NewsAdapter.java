@@ -199,7 +199,7 @@ public class NewsAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(activity, NewsDetailActiivity.class);
-                    intent.putExtra("url",news.getUrl());
+                    intent.putExtra("url",GlobalConstants.TOMCAT_URL+news.getUrl().substring(25));
                     activity.startActivity(intent);
 //                    修改为已读状态
                     newsViewHolder.textView.setTextColor(Color.GRAY);
