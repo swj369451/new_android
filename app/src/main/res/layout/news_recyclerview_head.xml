@@ -2,15 +2,16 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="240dp"
     android:id="@+id/ConLayout"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="240dp">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/news_content_viewpage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -18,12 +19,11 @@
 
     <View
         android:id="@+id/view3"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="40dp"
         android:background="#A1000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/news_content_viewpage"
+        app:layout_constraintStart_toStartOf="@+id/news_content_viewpage" />
 
     <TextView
         android:id="@+id/biaoti_textView"
@@ -32,41 +32,38 @@
         android:text="标题"
         android:textColor="#fff"
         android:textSize="20sp"
-        android:layout_marginLeft="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="@+id/view3"
         app:layout_constraintTop_toTopOf="@+id/view3" />
 
     <!--<com.viewpagerindicator.CirclePageIndicator-->
-        <!--android:id="@+id/indicator"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:fillColor="#f00"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/view3"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/view3"-->
-        <!--app:pageColor="#cccccc"-->
-        <!--app:radius="3dp" />-->
-    <LinearLayout
-        android:id="@+id/lll_container"
-        android:layout_width="100dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintTop_toTopOf="@+id/view3">
-    </LinearLayout>
+    <!--android:id="@+id/indicator"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:fillColor="#f00"-->
+    <!--app:layout_constraintBottom_toBottomOf="@+id/view3"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="@+id/view3"-->
+    <!--app:pageColor="#cccccc"-->
+    <!--app:radius="3dp" />-->
 
-    <ImageView
-        android:id="@+id/ivv_red_point"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
-        android:src="@drawable/shape_point_red"
-        app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintTop_toTopOf="@+id/view3" />
+    <com.lwj.widget.viewpagerindicator.ViewPagerIndicator
+        android:id="@+id/indicator"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="#A1000000"
+        app:layout_constraintBottom_toBottomOf="@+id/news_content_viewpage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/view3"
+        app:vpi_default_color="#cdcdcd"
+        app:vpi_distance="800dp"
+        app:vpi_distanceType="BY_LAYOUT"
+        app:vpi_indicatorType="SPRING"
+        app:vpi_length="24dp"
+        app:vpi_radius="8dp"
+        app:vpi_selected_color="#FF23EEF5">
+
+    </com.lwj.widget.viewpagerindicator.ViewPagerIndicator>
 </android.support.constraint.ConstraintLayout>

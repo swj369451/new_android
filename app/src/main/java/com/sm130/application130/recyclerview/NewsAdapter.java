@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.lwj.widget.viewpagerindicator.ViewPagerIndicator;
 import com.sm130.application130.NewActivity;
 import com.sm130.application130.NewsDetailActiivity;
 import com.sm130.application130.R;
@@ -29,7 +30,7 @@ import com.sm130.application130.fragment.WebViewFragment;
 import com.sm130.application130.global.GlobalConstants;
 import com.sm130.application130.u.MyBitmapUtils;
 import com.sm130.application130.utils.URLUtils;
-import com.viewpagerindicator.CirclePageIndicator;
+
 
 import java.lang.reflect.Type;
 import java.net.MalformedURLException;
@@ -81,67 +82,67 @@ public class NewsAdapter extends RecyclerView.Adapter {
 //            mIndicator.setViewPager(viewPager);
 //            mIndicator.setSnap(true);
 
+            ViewPagerIndicator viewPagerIndicator = view.findViewById(R.id.indicator);
+            viewPagerIndicator.setViewPager(viewPager,beijin.getTopnews().size());
 
 
 
-            final ImageView ivRedpoint = view.findViewById(R.id.ivv_red_point);
-
-
-//            画灰点
-            ArrayList<ImageView> imageViewArrayList = new ArrayList<>();
-            for (int j = 0; j < beijin.getTopnews().size(); j++) {
-
-//            初始化小圆点
-                ImageView point = new ImageView(activity);
-//            设置图片shape形状
-                point.setImageResource(R.drawable.shape_point_gray);
-                LinearLayout lll_container = view.findViewById(R.id.lll_container);
-                lll_container.addView(point);
-//                修改位置
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) point.getLayoutParams();
-                params.rightMargin=15;
-                params.topMargin=23;
-                point.setLayoutParams(params);
-            }
+//            final ImageView ivRedpoint = view.findViewById(R.id.ivv_red_point);
+////            画灰点
+//            ArrayList<ImageView> imageViewArrayList = new ArrayList<>();
+//            for (int j = 0; j < beijin.getTopnews().size(); j++) {
+//
+////            初始化小圆点
+//                ImageView point = new ImageView(activity);
+////            设置图片shape形状
+//                point.setImageResource(R.drawable.shape_point_gray);
+//                LinearLayout lll_container = view.findViewById(R.id.lll_container);
+//                lll_container.addView(point);
+////                修改位置
+//                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) point.getLayoutParams();
+//                params.rightMargin=15;
+//                params.topMargin=30;
+//                point.setLayoutParams(params);
+//            }
 
 //            设置小红点
-            viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageScrolled(int i, float v, int i1) {
-                    //            当页面滑动过程中的回调
-//                更新小红点的位置
-//                    int leftMargin = (int)(mPointDis*v)+(i%data.size())*mPointDis;//计算左边边距
-                    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ivRedpoint.getLayoutParams();
-
-                    int size = beijin.getTopnews().size();
-                    int a = (i-1000)%size;
-                    System.out.println(a);
-                    if(a==3) {
-                        params.rightMargin = 60;//修改左边距
-                    }else if(a==2){
-                        params.rightMargin = 90;//修改左边距
-                    }else if(a==1){
-                        params.rightMargin = 120;//修改左边距
-                    }else if(a==0){
-                        params.rightMargin = 150;//修改左边距
-                    }
-
-
-
-//                重新设置布局参数
-                    ivRedpoint.setLayoutParams(params);
-                }
-
-                @Override
-                public void onPageSelected(int i) {
-
-                }
-
-                @Override
-                public void onPageScrollStateChanged(int i) {
-
-                }
-            });
+//            viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//                @Override
+//                public void onPageScrolled(int i, float v, int i1) {
+//                    //            当页面滑动过程中的回调
+////                更新小红点的位置
+////                    int leftMargin = (int)(mPointDis*v)+(i%data.size())*mPointDis;//计算左边边距
+//                    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ivRedpoint.getLayoutParams();
+//
+//                    int size = beijin.getTopnews().size();
+//                    int a = (i-1000)%size;
+//                    System.out.println(a);
+//                    if(a==3) {
+//                        params.rightMargin = 60;//修改左边距
+//                    }else if(a==2){
+//                        params.rightMargin = 90;//修改左边距
+//                    }else if(a==1){
+//                        params.rightMargin = 120;//修改左边距
+//                    }else if(a==0){
+//                        params.rightMargin = 150;//修改左边距
+//                    }
+//
+//
+//
+////                重新设置布局参数
+//                    ivRedpoint.setLayoutParams(params);
+//                }
+//
+//                @Override
+//                public void onPageSelected(int i) {
+//
+//                }
+//
+//                @Override
+//                public void onPageScrollStateChanged(int i) {
+//
+//                }
+//            });
 
 
             viewPager.setCurrentItem(10000);

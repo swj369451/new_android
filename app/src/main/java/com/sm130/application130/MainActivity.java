@@ -30,7 +30,7 @@ import com.sm130.application130.fragment.NewsFragment;
 import com.sm130.application130.fragment.ZutuFragment;
 import com.sm130.application130.global.GlobalConstants;
 import com.sm130.application130.utils.URLUtils;
-import com.viewpagerindicator.CirclePageIndicator;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 //    公共碎片
     Fragment1 fragment1,fragment2,fragment3,fragment4,fragment5;
     NewsFragment newsFragment;
-    ZutuFragment zutuFragment;
+    ZutuFragment zutuFragment,zutuFragment2;
 
 
     Fragment currentFragment;
@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         newsFragment = NewsFragment.newInstance(jsonRootBean.getData().get(0).getChildren(),new Interface("新闻",true));
 //        组图的碎片
         zutuFragment = ZutuFragment.newInstance(zutuData.getData(),1);
+        zutuFragment2 = ZutuFragment.newInstance(zutuData.getData(),2);
 
 //        预先加载fragment
         getSupportFragmentManager().beginTransaction()
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 .add(R.id.container1,fragment5)
                 .add(R.id.container1,newsFragment)
                 .add(R.id.container1,zutuFragment)
+                .add(R.id.container1,zutuFragment2)
 //                .hide(fragment1)
                 .hide(fragment2)
                 .hide(fragment3)
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 .hide(newsFragment)
                 .hide(fragment4)
                 .hide(zutuFragment)
+                .hide(zutuFragment2)
                 .commit()
         ;
 
@@ -242,18 +245,31 @@ public class MainActivity extends AppCompatActivity {
     public void changeRecycleView(View view) {
 
         if(COL){
-            zutuFragment = ZutuFragment.newInstance(zutuData.getData(),2);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container1,zutuFragment,"f6")
+                    .hide(currentFragment)
+                    .show(zutuFragment2)
                     .commit();
+            currentFragment=zutuFragment2;
             drawer.closeDrawers();
+
+
+
+//            getSupportFragmentManager().beginTransaction()
+//                    .replace(R.id.container1,zutuFragment,"f6")
+//                    .commit();
+//            drawer.closeDrawers();
             COL=false;
         }else{
-            zutuFragment = ZutuFragment.newInstance(zutuData.getData(),1);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container1,zutuFragment,"f6")
+                    .hide(currentFragment)
+                    .show(zutuFragment)
                     .commit();
+            currentFragment=zutuFragment;
             drawer.closeDrawers();
+//            getSupportFragmentManager().beginTransaction()
+//                    .replace(R.id.container1,zutuFragment,"f6")
+//                    .commit();
+//            drawer.closeDrawers();
             COL=true;
         }
 

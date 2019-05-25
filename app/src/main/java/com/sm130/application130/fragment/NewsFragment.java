@@ -21,7 +21,7 @@ import com.sm130.application130.domain.Interface;
 import com.sm130.application130.beijing_domain.JsonRootBean;
 import com.sm130.application130.global.GlobalConstants;
 import com.sm130.application130.utils.URLUtils;
-import com.viewpagerindicator.CirclePageIndicator;
+
 
 import java.io.Serializable;
 import java.util.ArrayList;
