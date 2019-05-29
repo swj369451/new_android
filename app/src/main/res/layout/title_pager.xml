@@ -1,32 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/title_red_bg"
-    >
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="wrap_content"
+        android:layout_height="57dp"
+        android:background="@drawable/title_red_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#fff"
-        android:textSize="22sp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="智慧北京" />
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="智慧北京"
+        android:textColor="#fff"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19" />
 
     <ImageButton
         android:id="@+id/btn_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_menu"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:background="@null"
-        android:layout_marginLeft="10dp"
         android:onClick="draw"
-        />
+        android:src="@drawable/img_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/view4"
+        app:layout_constraintEnd_toStartOf="@+id/tv_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view4" />
+
+    <TextView
+        android:id="@+id/main_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主题"
+        android:textSize="20dp"
+        android:textColor="#f00"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view4" />
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

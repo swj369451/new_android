@@ -5,10 +5,12 @@ import java.io.Serializable;
 public class Interface implements Serializable {
     String title;
     Boolean ct;
+    String content;
 
-    public Interface(String title, Boolean ct) {
+    public Interface(String title, Boolean ct, String content) {
         this.title = title;
         this.ct = ct;
+        this.content = content;
     }
 
     public String getTitle() {
@@ -25,5 +27,13 @@ public class Interface implements Serializable {
 
     public void setCt(Boolean ct) {
         this.ct = ct;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

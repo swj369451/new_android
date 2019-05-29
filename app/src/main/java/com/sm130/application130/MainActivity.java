@@ -1,11 +1,14 @@
 package com.sm130.application130;
 
+import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -58,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        jsonRootBean=GetMassage.getHome();
 //        使用OkHttp发送get请求
         jsonRootBean= (JsonRootBean) URLUtils.getInstentForUrl(GlobalConstants.CATEGORY_URL,JsonRootBean.class);
         zutuData = (com.sm130.application130.zutu_domain.JsonRootBean)
@@ -77,14 +79,14 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
 //       首页碎片
-        fragment1 = Fragment1.newInstance(new Interface("智慧北京",false));
-        fragment2 = Fragment1.newInstance(new Interface("新闻",true));
-        fragment3 = Fragment1.newInstance(new Interface("生活",true));
-        fragment4 = Fragment1.newInstance(new Interface("人口管理",true));
-        fragment5 = Fragment1.newInstance(new Interface("设置",false));
+        fragment1 = Fragment1.newInstance(new Interface("智慧北京",false,"首页"));
+        fragment2 = Fragment1.newInstance(new Interface("新闻",true,""));
+        fragment3 = Fragment1.newInstance(new Interface("生活",true,"智慧服务"));
+        fragment4 = Fragment1.newInstance(new Interface("人口管理",true,"政务"));
+        fragment5 = Fragment1.newInstance(new Interface("设置",false,"设置"));
 
 //        新闻碎片
-        newsFragment = NewsFragment.newInstance(jsonRootBean.getData().get(0).getChildren(),new Interface("新闻",true));
+        newsFragment = NewsFragment.newInstance(jsonRootBean.getData().get(0).getChildren(),new Interface("新闻",true,""));
 //        组图的碎片
         zutuFragment = ZutuFragment.newInstance(zutuData.getData(),1);
         zutuFragment2 = ZutuFragment.newInstance(zutuData.getData(),2);
@@ -113,11 +115,6 @@ public class MainActivity extends AppCompatActivity {
 //        当前的fragment
         currentFragment = new Fragment();
         currentFragment=fragment1;
-//        fragment
-//        getSupportFragmentManager().beginTransaction()
-//                .add(R.id.container1,fragment1,"f0")
-//                .addToBackStack(Fragment1.class.getSimpleName())
-//                .commit();
 //       初始化数据
         initData();
 
@@ -137,8 +134,11 @@ public class MainActivity extends AppCompatActivity {
     }
     
 
-    private void initData() {
 
+    @SuppressLint("ResourceType")
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void initData() {
+//      初始化侧边栏
 //        设置背景颜色
         navigationView.setBackgroundColor(Color.BLACK);
 
@@ -146,14 +146,11 @@ public class MainActivity extends AppCompatActivity {
         Resources resource=(Resources)getBaseContext().getResources();
         ColorStateList csl=(ColorStateList)resource.getColorStateList(R.color.cbl);
         navigationView.setItemTextColor(csl);
-
-
 //        为侧边栏添加数据
         List<Data> data = jsonRootBean.getData();
         int i = 0;
         for(Data d:data){
-            navigationView.getMenu().add(1,i,1,d.getTitle());
-            navigationView.getMenu().findItem(i).setIcon(R.drawable.back);
+            navigationView.getMenu().add(1,i,1,d.getTitle()).setIcon(R.drawable.menu_arr_normal);
             i++;
         }
 
@@ -170,11 +167,7 @@ public class MainActivity extends AppCompatActivity {
                      currentFragment=newsFragment;
                      drawer.closeDrawers();
                 }else  if (id == 1) {
-                    // Handle the camera action
                     drawer.closeDrawers();
-//                    biaoti = findViewById(R.id.biaoti);
-//                    biaoti.setText("专题");
-//                    viewPager.setCurrentItem(5);
                     drawer.closeDrawers();
                 }else if (id == 2) {
                     getSupportFragmentManager().beginTransaction()
@@ -185,9 +178,6 @@ public class MainActivity extends AppCompatActivity {
                     drawer.closeDrawers();
                 }else if (id == 3) {
                     drawer.closeDrawers();
-//                    biaoti = findViewById(R.id.biaoti);
-//                    biaoti.setText("互动");
-//                    viewPager.setCurrentItem(7);
 
                 }
                     return true;
@@ -195,10 +185,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+//点击事件
     public void home(View view) {
-//        biaoti = findViewById(R.id.biaoti);
-//        biaoti.setText("首页");
         getSupportFragmentManager().beginTransaction()
                 .hide(currentFragment)
                 .show(fragment1)
@@ -243,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
         drawer.openDrawer(Gravity.START);
     }
     public void changeRecycleView(View view) {
-
+//        判断用户选择单列还是双列
         if(COL){
             getSupportFragmentManager().beginTransaction()
                     .hide(currentFragment)
@@ -251,13 +239,6 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
             currentFragment=zutuFragment2;
             drawer.closeDrawers();
-
-
-
-//            getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.container1,zutuFragment,"f6")
-//                    .commit();
-//            drawer.closeDrawers();
             COL=false;
         }else{
             getSupportFragmentManager().beginTransaction()
@@ -266,16 +247,8 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
             currentFragment=zutuFragment;
             drawer.closeDrawers();
-//            getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.container1,zutuFragment,"f6")
-//                    .commit();
-//            drawer.closeDrawers();
             COL=true;
         }
-
-
-
-
     }
 }
 

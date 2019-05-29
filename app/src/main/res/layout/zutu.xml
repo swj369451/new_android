@@ -7,9 +7,9 @@
     android:orientation="vertical">
 
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/title_pager" />
+    <!--<include-->
+        <!--android:id="@+id/include"-->
+        <!--layout="@layout/title_pager" />-->
 
     <RelativeLayout
         android:id="@+id/relativeLayout"

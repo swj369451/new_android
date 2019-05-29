@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.sm130.application130.R;
 import com.sm130.application130.domain.Interface;
 
+import org.w3c.dom.Text;
+
 public class Fragment1 extends Fragment {
     public static String TITLE  = "title";
     public static String CT  = "ct";
@@ -26,7 +28,7 @@ public class Fragment1 extends Fragment {
         super.onAttach(context);
         mActiviy = (Activity) context;
 //        获取外部传送的数据
-        data=new Interface(getArguments().getString(TITLE),getArguments().getBoolean(CT));
+        data=new Interface(getArguments().getString(TITLE),getArguments().getBoolean(CT),getArguments().getString("content"));
     }
 
     @Nullable
@@ -36,9 +38,11 @@ public class Fragment1 extends Fragment {
 //        视图内的元素
         TextView textView = root.findViewById(R.id.tv_title);
         ImageButton imageButton = root.findViewById(R.id.btn_menu);
+        TextView textView1 = root.findViewById(R.id.main_content);
 
 //        设置值
         textView.setText(data.getTitle());
+        textView1.setText(data.getContent());
 
         if(data.getCt()==true){
             imageButton.setVisibility(View.VISIBLE);
@@ -56,7 +60,7 @@ public class Fragment1 extends Fragment {
 //        放数据
         bundle.putString(TITLE,data.getTitle());
         bundle.putBoolean(CT,data.getCt());
-
+        bundle.putString("content",data.getContent());
         frag.setArguments(bundle);
         return frag;
     }
