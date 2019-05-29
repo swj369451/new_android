@@ -68,14 +68,13 @@ public class NewsFragment extends Fragment {
         ViewPager viewPager = root.findViewById(R.id.news_viewpage);
         TabLayout tabLayout = root.findViewById(R.id.news_tablayout);
 
-//        final List<DemoFragment> fragment1s = new ArrayList<>();
         final List<ViewPageFragment> viewPageFragments = new ArrayList<>();
 
 //        设置数据
         for (Children c:data){
             tabLayout.addTab(tabLayout.newTab().setText(c.getTitle()));
 
-//            fragment1s.add(DemoFragment.newInstance(c.getUrl()));
+
 
 //            通过http请求获取数据
             String url = GlobalConstants.TOMCAT_URL + c.getUrl();

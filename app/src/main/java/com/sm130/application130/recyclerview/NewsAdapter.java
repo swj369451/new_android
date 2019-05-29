@@ -2,42 +2,25 @@ package com.sm130.application130.recyclerview;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lwj.widget.viewpagerindicator.ViewPagerIndicator;
-import com.sm130.application130.NewActivity;
 import com.sm130.application130.NewsDetailActiivity;
 import com.sm130.application130.R;
 import com.sm130.application130.beijing_domain.Data;
 import com.sm130.application130.beijing_domain.News;
-import com.sm130.application130.fragment.DemoFragment;
-import com.sm130.application130.fragment.WebViewFragment;
 import com.sm130.application130.global.GlobalConstants;
 import com.sm130.application130.u.MyBitmapUtils;
-import com.sm130.application130.utils.URLUtils;
 
 
-import java.lang.reflect.Type;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter {

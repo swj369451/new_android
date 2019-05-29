@@ -38,16 +38,6 @@
         app:layout_constraintStart_toStartOf="@+id/view3"
         app:layout_constraintTop_toTopOf="@+id/view3" />
 
-    <!--<com.viewpagerindicator.CirclePageIndicator-->
-    <!--android:id="@+id/indicator"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--app:fillColor="#f00"-->
-    <!--app:layout_constraintBottom_toBottomOf="@+id/view3"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="@+id/view3"-->
-    <!--app:pageColor="#cccccc"-->
-    <!--app:radius="3dp" />-->
 
     <com.lwj.widget.viewpagerindicator.ViewPagerIndicator
         android:id="@+id/indicator"

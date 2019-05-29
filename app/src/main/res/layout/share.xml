@@ -25,7 +25,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintStart_toStartOf="parent"
          app:layout_constraintTop_toTopOf="@+id/view2"
-        app:srcCompat="@drawable/back"
+        android:background="@drawable/skyblue_actionbar_back_btn"
         android:onClick="back"
         />
 
@@ -36,7 +36,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintTop_toTopOf="@+id/view2"
-        app:srcCompat="@drawable/newscenter" />
+        android:background="@drawable/skyblue_actionbar_ok_btn" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/share_recyclerView"
