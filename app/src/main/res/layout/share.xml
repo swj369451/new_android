@@ -36,7 +36,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintTop_toTopOf="@+id/view2"
-        android:background="@drawable/skyblue_actionbar_ok_btn" />
+        android:background="@drawable/skyblue_actionbar_ok_btn"
+        android:onClick="share"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/share_recyclerView"

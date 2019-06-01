@@ -18,6 +18,9 @@ public class NewsDetailActiivity extends Activity {
     private ImageButton menu;
     private WebView webView;
     WebSettings settings;
+    private String url;
+    private String title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +34,8 @@ public class NewsDetailActiivity extends Activity {
          settings = webView.getSettings();
 
         Intent intent = getIntent();
-        String url = intent.getStringExtra("url");
+        url = intent.getStringExtra("url");
+        title = intent.getStringExtra("title");
         webView.loadUrl(url);
 
 
@@ -39,6 +43,8 @@ public class NewsDetailActiivity extends Activity {
 
     public void share(View view) {
         Intent intent = new Intent(this, ShareActivity.class);
+        intent.putExtra("url",url);
+        intent.putExtra("title",title);
         this.startActivity(intent);
     }
 
