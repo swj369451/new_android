@@ -69,7 +69,6 @@ public class ShareActivity extends Activity {
         params.putString(QQShare.SHARE_TO_QQ_SUMMARY,  "清明11家游客接待");
         params.putString(QQShare.SHARE_TO_QQ_TARGET_URL,url);
         params.putString(QQShare.SHARE_TO_QQ_APP_NAME,  "智慧北京");
-//        params.putInt(QQShare.SHARE_TO_QQ_EXT_INT,  "其他附加功能");
         mTencent.shareToQQ(ShareActivity.this,params,qqShareListener);
     }
 

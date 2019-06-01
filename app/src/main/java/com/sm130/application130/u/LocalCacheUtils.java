@@ -9,12 +9,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-/**
- * 本地缓存
- * 
- * @author Kevin
- * @date 2015-10-24
- */
 public class LocalCacheUtils {
 
 	private static final String LOCAL_CACHE_PATH = Environment

@@ -5,12 +5,6 @@ import android.widget.ImageView;
 
 import com.sm130.application130.R;
 
-/**
- * 自定义三级缓存图片加载工具
- * 
- * @author Kevin
- * @date 2015-10-24
- */
 public class MyBitmapUtils {
 
 	private NetCacheUtils mNetCacheUtils;

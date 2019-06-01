@@ -11,12 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * 网络缓存
- * 
- * @author Kevin
- * @date 2015-10-24
- */
+
 public class NetCacheUtils {
 
 	private LocalCacheUtils mLocalCacheUtils;
@@ -33,13 +28,6 @@ public class NetCacheUtils {
 		new BitmapTask().execute(imageView, url);// 启动AsyncTask
 	}
 
-	/**
-	 * 三个泛型意义: 第一个泛型:doInBackground里的参数类型 第二个泛型: onProgressUpdate里的参数类型 第三个泛型:
-	 * onPostExecute里的参数类型及doInBackground的返回类型
-	 * 
-	 * @author Kevin
-	 * @date 2015-10-24
-	 */
 	class BitmapTask extends AsyncTask<Object, Integer, Bitmap> {
 
 		private ImageView imageView;
