@@ -3,14 +3,18 @@ package com.sm130.application130.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -28,6 +32,7 @@ public class ViewPageFragment extends Fragment {
     private Data data;
     private Activity mActiviy;
 
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -42,6 +47,9 @@ public class ViewPageFragment extends Fragment {
         View root = inflater.inflate(R.layout.content_viewpager_recyclerview, container, false);
 //        视图内的元素
         RecyclerView view = root.findViewById(R.id.content_recyclerView);
+
+        ViewPager viewPage = view.findViewById(R.id.news_content_viewpage);
+
 
 //        设置属性
         FragmentActivity activity = getActivity();

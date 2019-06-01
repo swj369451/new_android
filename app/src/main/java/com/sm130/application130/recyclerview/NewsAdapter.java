@@ -3,10 +3,13 @@ package com.sm130.application130.recyclerview;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -22,17 +25,20 @@ import com.sm130.application130.u.MyBitmapUtils;
 
 
 import java.util.List;
+import java.util.logging.LogRecord;
 
 public class NewsAdapter extends RecyclerView.Adapter {
 
     public static final int HEAD_TYPE = 0;
     public static final int BODY_TYPE = 1;
     public static final int FOOT_TYPE = 2;
+
     private  int mPointDis;
 
     private List<News> data;
     private Data beijin;
     private Activity activity;
+    Handler mHandler=null;
 
     public NewsAdapter(Data beijin,Activity activity) {
         this.data = beijin.getNews();
@@ -53,82 +59,74 @@ public class NewsAdapter extends RecyclerView.Adapter {
         }
     }
 
+
+//    public void zidon(final ViewPager viewPager){
+//        //头条新闻自动轮播
+//
+//        if (mHandler == null) {
+//            mHandler = new Handler() {
+//                @Override
+//                public void handleMessage(Message msg) {
+//                    int currentItem = viewPager.getCurrentItem();
+//                    currentItem++;
+//
+//                    if (currentItem > data.size() - 1) {
+//                        currentItem = 0;//如果已经跳转到了最后一个页面，跳到第一页
+//
+//                    }
+//                    viewPager.setCurrentItem(currentItem);
+//
+//                    mHandler.sendEmptyMessageDelayed(0, 3000);//继续发送延时3秒的消息，形成内循环
+//                }
+//            };
+//            //保证启动自动轮播逻辑只执行一次
+//            mHandler.sendEmptyMessageDelayed(0, 3000);//发送延时3秒的消息
+////            viewPager.setOnTouchListener(new View.OnTouchListener() {
+////                @Override
+////                public boolean onTouch(View v, MotionEvent event) {
+////                    switch (event.getAction()) {
+////                        case MotionEvent.ACTION_DOWN://鼠标按下的时候
+////                            System.out.println("ACTION_DOWN");
+////                            //停止广告自动轮播
+////                            //删除handler的所有消息
+////                            mHandler.removeCallbacksAndMessages(null);
+////
+////                            break;
+////                        case MotionEvent.ACTION_CANCEL://鼠标抬起的时候---取消事件
+////                            //当按下viewpager后，直接滑动listview，导致抬起事件无法响应，但会走此事件
+////                            System.out.println("ACTION_CANCEL");
+////                            //启动广告
+////                            mHandler.sendEmptyMessageDelayed(0, 3000);
+////                            break;
+////                        case MotionEvent.ACTION_UP:
+////                            System.out.println("ACTION_UP");
+////                            //启动广告
+////                            mHandler.sendEmptyMessageDelayed(0, 3000);
+////                            break;
+////                        default:
+////                            break;
+////                    }
+////                    return false;
+////                }
+////            });
+//        }
+//
+//    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        final ViewPager viewPager;
+
         if(i == HEAD_TYPE) {
-            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_recyclerview_head, viewGroup, false);
+            final View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_recyclerview_head, viewGroup, false);
+            viewPager = view.findViewById(R.id.news_content_viewpage);
 
-            ViewPager viewPager = view.findViewById(R.id.news_content_viewpage);
             viewPager.setAdapter(new AdvertisePagerAdapter(beijin.getTopnews(),view));
-//            CirclePageIndicator mIndicator =view.findViewById(R.id.indicator);
-//            mIndicator.setViewPager(viewPager);
-//            mIndicator.setSnap(true);
-
             ViewPagerIndicator viewPagerIndicator = view.findViewById(R.id.indicator);
             viewPagerIndicator.setViewPager(viewPager,beijin.getTopnews().size());
-
-
-
-//            final ImageView ivRedpoint = view.findViewById(R.id.ivv_red_point);
-////            画灰点
-//            ArrayList<ImageView> imageViewArrayList = new ArrayList<>();
-//            for (int j = 0; j < beijin.getTopnews().size(); j++) {
-//
-////            初始化小圆点
-//                ImageView point = new ImageView(activity);
-////            设置图片shape形状
-//                point.setImageResource(R.drawable.shape_point_gray);
-//                LinearLayout lll_container = view.findViewById(R.id.lll_container);
-//                lll_container.addView(point);
-////                修改位置
-//                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) point.getLayoutParams();
-//                params.rightMargin=15;
-//                params.topMargin=30;
-//                point.setLayoutParams(params);
-//            }
-
-//            设置小红点
-//            viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//                @Override
-//                public void onPageScrolled(int i, float v, int i1) {
-//                    //            当页面滑动过程中的回调
-////                更新小红点的位置
-////                    int leftMargin = (int)(mPointDis*v)+(i%data.size())*mPointDis;//计算左边边距
-//                    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ivRedpoint.getLayoutParams();
-//
-//                    int size = beijin.getTopnews().size();
-//                    int a = (i-1000)%size;
-//                    System.out.println(a);
-//                    if(a==3) {
-//                        params.rightMargin = 60;//修改左边距
-//                    }else if(a==2){
-//                        params.rightMargin = 90;//修改左边距
-//                    }else if(a==1){
-//                        params.rightMargin = 120;//修改左边距
-//                    }else if(a==0){
-//                        params.rightMargin = 150;//修改左边距
-//                    }
-//
-//
-//
-////                重新设置布局参数
-//                    ivRedpoint.setLayoutParams(params);
-//                }
-//
-//                @Override
-//                public void onPageSelected(int i) {
-//
-//                }
-//
-//                @Override
-//                public void onPageScrollStateChanged(int i) {
-//
-//                }
-//            });
-
-
             viewPager.setCurrentItem(10000);
+//            zidon(viewPager);
             return new HeadViewHolder(view);
 
         }else if(i==FOOT_TYPE){
@@ -138,6 +136,8 @@ public class NewsAdapter extends RecyclerView.Adapter {
             View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_recyclerview_item, viewGroup, false);
             return new NewsViewHolder(view);
         }
+
+
     }
 
     @Override
