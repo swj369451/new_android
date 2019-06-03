@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable\\notification_bg_low.xml",
+        "source": "C:\\Users\\hasee\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\920319c5a7bcfedd130c0b1e058814ab\\res\\drawable\\notification_bg_low.xml"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable\\vpi__tab_indicator.xml",
+        "source": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\src\\main\\res\\drawable\\vpi__tab_indicator.xml"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable\\notification_icon_background.xml",
+        "source": "C:\\Users\\hasee\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\920319c5a7bcfedd130c0b1e058814ab\\res\\drawable\\notification_icon_background.xml"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable\\notification_tile_bg.xml",
+        "source": "C:\\Users\\hasee\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\920319c5a7bcfedd130c0b1e058814ab\\res\\drawable\\notification_tile_bg.xml"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable\\notification_bg.xml",
+        "source": "C:\\Users\\hasee\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\920319c5a7bcfedd130c0b1e058814ab\\res\\drawable\\notification_bg.xml"
+    }
+]

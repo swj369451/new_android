@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_unselected_holo.9.png",
+        "source": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\src\\main\\res\\drawable-mdpi\\vpi__tab_unselected_holo.9.png"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_unselected_focused_holo.9.png",
+        "source": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\src\\main\\res\\drawable-mdpi\\vpi__tab_unselected_focused_holo.9.png"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_selected_focused_holo.9.png",
+        "source": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\src\\main\\res\\drawable-mdpi\\vpi__tab_selected_focused_holo.9.png"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_unselected_pressed_holo.9.png",
+        "source": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\src\\main\\res\\drawable-mdpi\\vpi__tab_unselected_pressed_holo.9.png"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\notification_bg_low_normal.9.png",
+        "source": "C:\\Users\\hasee\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\920319c5a7bcfedd130c0b1e058814ab\\res\\drawable-mdpi-v4\\notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png",
+        "source": "C:\\Users\\hasee\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\920319c5a7bcfedd130c0b1e058814ab\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\notify_panel_notification_icon_bg.png",
+        "source": "C:\\Users\\hasee\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\920319c5a7bcfedd130c0b1e058814ab\\res\\drawable-mdpi-v4\\notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\notification_bg_normal_pressed.9.png",
+        "source": "C:\\Users\\hasee\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\920319c5a7bcfedd130c0b1e058814ab\\res\\drawable-mdpi-v4\\notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\notification_bg_normal.9.png",
+        "source": "C:\\Users\\hasee\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\920319c5a7bcfedd130c0b1e058814ab\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_selected_holo.9.png",
+        "source": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\src\\main\\res\\drawable-mdpi\\vpi__tab_selected_holo.9.png"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_selected_pressed_holo.9.png",
+        "source": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\src\\main\\res\\drawable-mdpi\\vpi__tab_selected_pressed_holo.9.png"
+    }
+]

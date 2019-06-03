@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\color\\vpi__light_theme.xml",
+        "source": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\src\\main\\res\\color\\vpi__light_theme.xml"
+    },
+    {
+        "merged": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\build\\intermediates\\res\\merged\\release\\color\\vpi__dark_theme.xml",
+        "source": "F:\\test\\new_android\\viewPagerIndicatorLibrary\\src\\main\\res\\color\\vpi__dark_theme.xml"
+    }
+]

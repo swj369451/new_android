@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 
 import com.sm130.application130.utils.PrefUtils;
 
+import cn.jpush.android.api.JPushInterface;
+
 public class SplashActivity extends Activity {
 
 
@@ -23,6 +25,10 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+//        极光推送
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
 
         rlRoot = (RelativeLayout)findViewById(R.id.rl_root);
 

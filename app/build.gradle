@@ -9,7 +9,18 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            abiFilters "armeabi-v7a","x86"
+        }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "b47d2fa4a8a7edf5352b1bf2", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -31,6 +42,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-    compile 'com.github.LinweiJ:ViewPagerIndicator:0.1.0'
+    implementation 'com.github.LinweiJ:ViewPagerIndicator:0.1.0'
     implementation files('libs/open_sdk_r6019_lite.jar')
+    implementation 'cn.jiguang.sdk:jpush:3.3.1'  // 此处以JPush 3.3.1 版本为例。
+    implementation 'cn.jiguang.sdk:jcore:2.0.1'  // 此处以JCore 2.0.1 版本为例。
 }
